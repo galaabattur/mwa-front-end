@@ -1,1 +1,6 @@
 @import "~bootstrap/dist/css/bootstrap.css";
+
+.navbar-toggle.navbar-left {
+  float: left;
+  margin-left: 10px;
+}
