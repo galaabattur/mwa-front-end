@@ -72,14 +72,13 @@
           aria-label="Search"
         />
 
-        <div *ngIf="loginFailed" class="alert alert-danger">
-          Login failed
-        </div>
-
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
           Login
         </button>
       </form>
+      <div *ngIf="loginFailed" class="alert alert-danger">
+        Username or password is incorrect
+      </div>
     </div>
   </div>
 </nav>

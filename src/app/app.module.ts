@@ -11,10 +11,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { FirstComponent } from './first/first.component';
+import { SampleWishComponent } from './sample-wish/sample-wish.component';
+import { NewsComponent } from './news/news.component';
+import { PostsComponent } from './posts/posts.component';
+import { UserOperationComponent } from './user-operation/user-operation.component';
+import { AdvertiseComponent } from './advertise/advertise.component';
 
 const appRoutes: Routes = [
-  { path: '', component: FirstComponent },
+  { path: '', component: WelcomeComponent },
   { path: 'home', component: HomeComponent },
   { path: '**', component: NotfoundComponent }
 ];
@@ -27,7 +31,11 @@ const appRoutes: Routes = [
     WelcomeComponent,
     HomeComponent,
     NotfoundComponent,
-    FirstComponent
+    SampleWishComponent,
+    NewsComponent,
+    PostsComponent,
+    UserOperationComponent,
+    AdvertiseComponent
   ],
   imports: [
     BrowserModule,
