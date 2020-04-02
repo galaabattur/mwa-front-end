@@ -1,12 +1,44 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { LoginService } from '../service/login/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
-  constructor() {}
+export class NavbarComponent {
+  form: FormGroup;
+  invalidLogin: boolean;
 
-  ngOnInit(): void {}
+  loginFailed: boolean;
+
+  constructor(private router: Router, private service: LoginService) {
+    this.form = new FormGroup({
+      username: new FormControl(''),
+      password: new FormControl('')
+    });
+  }
+
+  get username() {
+    return this.form.get('username');
+  }
+  get password() {
+    return this.form.get('password');
+  }
+  log(x) {
+    console.log(x);
+  }
+
+  submit(f) {
+    this.service.login(f.value).subscribe(data => {
+      if (data.valid) {
+        localStorage.setItem('valid', 'true');
+        this.router.navigate(['home']);
+      } else {
+        this.loginFailed = true;
+      }
+    });
+  }
 }
