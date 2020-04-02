@@ -31,10 +31,11 @@ export class NavbarComponent {
     console.log(x);
   }
 
-  submit(f) {
-    this.service.login(f.value).subscribe(data => {
+  login(formData) {
+    this.service.login(formData).subscribe(data => {
+      console.log(data);
       if (data.valid) {
-        localStorage.setItem('valid', 'true');
+        localStorage.setItem('token', data.tokenData);
         this.router.navigate(['home']);
       } else {
         this.loginFailed = true;

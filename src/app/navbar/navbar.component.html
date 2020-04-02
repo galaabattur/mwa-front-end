@@ -56,7 +56,7 @@
       <form
         class="form-inline my-2 my-lg-0"
         [formGroup]="form"
-        (ngSubmit)="submit(form)"
+        (ngSubmit)="login(form.value)"
       >
         <input
           formControlName="username"
