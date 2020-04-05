@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   form: FormGroup;
   invalidLogin: boolean;
 
@@ -21,6 +21,8 @@ export class NavbarComponent {
     });
   }
 
+  ngOnInit() {}
+
   get username() {
     return this.form.get('username');
   }
@@ -32,14 +34,6 @@ export class NavbarComponent {
   }
 
   login(formData) {
-    this.service.login(formData).subscribe(data => {
-      console.log(data);
-      if (data.valid) {
-        localStorage.setItem('token', data.tokenData);
-        this.router.navigate(['home']);
-      } else {
-        this.loginFailed = true;
-      }
-    });
+    this.service.login(formData).subscribe(data => console.log(data));
   }
 }
