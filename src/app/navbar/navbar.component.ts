@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
   form: FormGroup;
@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router, private service: LoginService) {
     this.form = new FormGroup({
       username: new FormControl(''),
-      password: new FormControl('')
+      password: new FormControl(''),
     });
   }
 
@@ -34,6 +34,17 @@ export class NavbarComponent implements OnInit {
   }
 
   login(formData) {
-    this.service.login(formData).subscribe(data => console.log(data));
+    this.service.login(formData).subscribe(
+      (data) => {
+        // success case
+        console.log(data);
+        localStorage.setItem('token', data['token']);
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        // Error section
+        this.loginFailed = true;
+      }
+    );
   }
 }

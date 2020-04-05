@@ -3,9 +3,10 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { AppError } from 'src/app/common/App-Error';
 import { catchError, tap } from 'rxjs/operators';
+// import 'rxjs/add/operator/catch';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
   private loginUrl = 'http://localhost:3000/api/user/login';
@@ -13,26 +14,18 @@ export class LoginService {
   constructor(private http: HttpClient) {}
 
   login(data) {
-    // return this.http.post(this.loginUrl, data).subscribe(
-    //   (response: Response) => {
-    //     console.log('response', response);
-    //   },
-    //   (error: HttpErrorResponse) => {
-    //     return Observable.throw(new AppError(error));
-    //   }
-    // );
-
-    return this.http.post(this.loginUrl, data).pipe(
-      tap((response: Response) => {
-        console.log(response);
-      }, catchError(this.errorHandler))
-    );
+    return this.http
+      .post(this.loginUrl, data)
+      .pipe(catchError(this.handleError));
   }
 
-  errorHandler(err: HttpErrorResponse): Observable<AppError> {
-    if (err.status == 400) {
-      alert('bad request');
+  private handleError(error) {
+    if (error instanceof HttpErrorResponse) {
+      // Server side error
+      console.log('err', error);
+    } else {
+      // client side error
     }
-    return Observable.throw(new AppError(err.message));
+    return throwError(error);
   }
 }
