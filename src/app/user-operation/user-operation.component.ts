@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'user-operation',
@@ -7,9 +7,28 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-operation.component.css'],
 })
 export class UserOperationComponent implements OnInit {
-  constructor(private router: Router) {}
+  username: String;
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.username = localStorage.getItem('token');
+  }
+
+  changeToFollowers() {
+    return this.router.navigate(['home/followers']);
+  }
+
+  changeToFollowing() {
+    return this.router.navigate(['home/following']);
+  }
+
+  changeToNews() {
+    return this.router.navigate(['home/news']);
+  }
+
+  changeToUserDetails() {
+    return this.router.navigate(['home/userdetails']);
+  }
 
   logout() {
     localStorage.removeItem('token');

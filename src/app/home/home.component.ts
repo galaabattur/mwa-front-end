@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../service/login/login.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'home',
@@ -10,12 +10,16 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   currPage: String;
 
-  constructor(private service: LoginService, private router: Router) {}
+  constructor(
+    private service: LoginService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     let token = localStorage.getItem('token');
     if (token) {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/home/news']);
       this.currPage = 'home';
     } else {
       this.router.navigate(['/']);

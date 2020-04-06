@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
   form: FormGroup;
   invalidLogin: boolean;
   loginFailed: boolean;
+  notLoggedIn = true;
 
   constructor(private router: Router, private service: LoginService) {
     this.form = new FormGroup({

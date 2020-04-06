@@ -5,16 +5,44 @@
     aria-orientation="vertical"
   >
     <li class="nav-item">
-      <a routerLink="/user" class="nav-link" role="tab">User profile</a>
+      <a
+        routerLink="/home/userdetails"
+        routerLinkActive="active"
+        class="nav-link"
+        role="tab"
+        (click)="changeToUserDetails()"
+        >User profile</a
+      >
     </li>
     <li class="nav-item">
-      <a href="" class="nav-link active" role="tab">Home</a>
+      <a
+        routerLink="/home/news"
+        class="nav-link"
+        routerLinkActive="active"
+        role="tab"
+        (click)="changeToNews()"
+        >Home</a
+      >
     </li>
     <li class="nav-item">
-      <a href="/following" class="nav-link" role="tab">Following</a>
+      <a
+        routerLink="/home/following"
+        routerLinkActive="active"
+        class="nav-link"
+        role="tab"
+        (click)="changeToFollowing()"
+        >Following</a
+      >
     </li>
     <li class="nav-item">
-      <a routerLink="/followers" class="nav-link" role="tab">Followers</a>
+      <a
+        routerLink="/home/followers"
+        routerLinkActive="active"
+        class="nav-link"
+        role="tab"
+        (click)="changeToFollowers()"
+        >Followers</a
+      >
     </li>
 
     <li class="nav-item">

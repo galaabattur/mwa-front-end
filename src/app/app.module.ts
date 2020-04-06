@@ -18,11 +18,22 @@ import { UserOperationComponent } from './user-operation/user-operation.componen
 import { AdvertiseComponent } from './advertise/advertise.component';
 import { FollowersComponent } from './followers/followers.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { FollowingComponent } from './following/following.component';
 
 const appRoutes: Routes = [
   { path: '', component: WelcomeComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'followers', component: FollowersComponent },
+  {
+    path: 'home',
+    component: HomeComponent,
+    children: [
+      { path: 'userdetails', component: UserDetailsComponent },
+      { path: 'following', component: FollowingComponent },
+      { path: 'followers', component: FollowersComponent },
+      { path: 'news', component: NewsComponent },
+    ],
+  },
+  // { path: 'followers', component: FollowersComponent },
+  // { path: 'following', component: FollowingComponent },
   { path: 'user', component: UserDetailsComponent },
   { path: '**', component: NotfoundComponent },
 ];
@@ -42,6 +53,7 @@ const appRoutes: Routes = [
     AdvertiseComponent,
     FollowersComponent,
     UserDetailsComponent,
+    FollowingComponent,
   ],
   imports: [
     BrowserModule,
