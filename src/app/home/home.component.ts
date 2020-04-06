@@ -17,7 +17,5 @@ export class HomeComponent implements OnInit {
     } else {
       this.router.navigate(['/']);
     }
-
-    console.log(token);
   }
 }

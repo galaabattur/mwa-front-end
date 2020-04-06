@@ -16,11 +16,13 @@ import { NewsComponent } from './news/news.component';
 import { PostsComponent } from './posts/posts.component';
 import { UserOperationComponent } from './user-operation/user-operation.component';
 import { AdvertiseComponent } from './advertise/advertise.component';
+import { FollowersComponent } from './followers/followers.component';
 
 const appRoutes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'home', component: HomeComponent },
-  { path: '**', component: NotfoundComponent }
+  { path: 'followers', component: FollowersComponent },
+  { path: '**', component: NotfoundComponent },
 ];
 
 @NgModule({
@@ -35,7 +37,8 @@ const appRoutes: Routes = [
     NewsComponent,
     PostsComponent,
     UserOperationComponent,
-    AdvertiseComponent
+    AdvertiseComponent,
+    FollowersComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,9 +46,9 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
