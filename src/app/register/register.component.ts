@@ -1,12 +1,50 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { LoginService } from '../service/login/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  constructor() {}
+  form: FormGroup;
+  formError: Boolean;
+  formErrorMessage: String;
+
+  constructor(private service: LoginService, private router: Router) {
+    this.form = new FormGroup({
+      username: new FormControl(''),
+      password: new FormControl(''),
+      email: new FormControl(),
+    });
+  }
 
   ngOnInit(): void {}
+
+  register(formData) {
+    this.service.register(formData).subscribe(
+      (data) => {
+        localStorage.setItem('token', data['token']);
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        console.log(error.error);
+        this.formErrorMessage = error.error;
+        this.formError = true;
+      }
+    );
+  }
+
+  get username() {
+    return this.form.get('username');
+  }
+  get password() {
+    return this.form.get('password');
+  }
+
+  get email() {
+    return this.form.get('email');
+  }
 }

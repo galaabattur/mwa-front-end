@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   form: FormGroup;
   invalidLogin: boolean;
-
   loginFailed: boolean;
 
   constructor(private router: Router, private service: LoginService) {
@@ -21,7 +20,13 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (localStorage.getItem('token') === null) {
+      this.router.navigate(['/']);
+    } else {
+      this.router.navigate(['/home']);
+    }
+  }
 
   get username() {
     return this.form.get('username');
@@ -37,7 +42,6 @@ export class NavbarComponent implements OnInit {
     this.service.login(formData).subscribe(
       (data) => {
         // success case
-        console.log(data);
         localStorage.setItem('token', data['token']);
         this.router.navigate(['/home']);
       },
