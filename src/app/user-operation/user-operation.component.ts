@@ -32,6 +32,7 @@ export class UserOperationComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('isAdmin');
     this.router.navigate(['/']);
   }
 }

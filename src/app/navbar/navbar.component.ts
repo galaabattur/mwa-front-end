@@ -44,6 +44,7 @@ export class NavbarComponent implements OnInit {
       (data) => {
         // success case
         localStorage.setItem('token', data['token']);
+        localStorage.setItem('isAdmin', data['isAdmin']);
         this.router.navigate(['/home']);
       },
       (error) => {
