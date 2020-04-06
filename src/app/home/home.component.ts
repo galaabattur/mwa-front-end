@@ -8,12 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  currPage: String;
+
   constructor(private service: LoginService, private router: Router) {}
 
   ngOnInit(): void {
     let token = localStorage.getItem('token');
     if (token) {
       this.router.navigate(['/home']);
+      this.currPage = 'home';
     } else {
       this.router.navigate(['/']);
     }

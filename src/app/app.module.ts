@@ -17,11 +17,13 @@ import { PostsComponent } from './posts/posts.component';
 import { UserOperationComponent } from './user-operation/user-operation.component';
 import { AdvertiseComponent } from './advertise/advertise.component';
 import { FollowersComponent } from './followers/followers.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 const appRoutes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'followers', component: FollowersComponent },
+  { path: 'user', component: UserDetailsComponent },
   { path: '**', component: NotfoundComponent },
 ];
 
@@ -39,6 +41,7 @@ const appRoutes: Routes = [
     UserOperationComponent,
     AdvertiseComponent,
     FollowersComponent,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,
