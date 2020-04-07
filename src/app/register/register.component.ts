@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
         const tokenData = jwt_decode(data['token']);
         let userRes: UserResponse = JSON.parse(JSON.stringify(data));
         localStorage.setItem('token', userRes.token);
-        localStorage.setItem('admin', tokenData.isAdmin);
+        localStorage.setItem('isAdmin', tokenData.isAdmin);
 
         if (tokenData.isAdmin) {
         } else {
