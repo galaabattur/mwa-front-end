@@ -29,6 +29,7 @@ export class RegisterComponent implements OnInit {
       (data) => {
         let userRes: UserResponse = JSON.parse(JSON.stringify(data));
         localStorage.setItem('token', userRes.token);
+        localStorage.setItem('admin', userRes.isAdmin);
 
       if(userRes.isAdmin) {
 
