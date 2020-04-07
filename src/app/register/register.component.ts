@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { LoginService } from '../service/login/login.service';
 import { Router } from '@angular/router';
 import UserResponse from '../models/UserResponse';
+import * as jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'register',
@@ -27,12 +28,13 @@ export class RegisterComponent implements OnInit {
   register(formData) {
     this.service.register(formData).subscribe(
       (data) => {
+        const tokenData = jwt_decode(data['token']);
         let userRes: UserResponse = JSON.parse(JSON.stringify(data));
         localStorage.setItem('token', userRes.token);
+        localStorage.setItem('isAdmin', tokenData.isAdmin);
 
-      if(userRes.isAdmin) {
-
-      } else {
+        if (userRes.isAdmin) {
+        } else {
           this.router.navigate(['/home']);
         }
       },

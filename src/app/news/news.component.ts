@@ -20,7 +20,13 @@ export class NewsComponent implements OnInit {
     return this.form.get('postname');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getPosts();
+  }
+
+  getPosts() {
+    this.postService.getPosts();
+  }
 
   newPost(data) {
     this.postService.submitPost(data);

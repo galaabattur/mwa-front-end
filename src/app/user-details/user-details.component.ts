@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../service/user/user.service';
+import * as jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'user-details',
@@ -10,10 +11,12 @@ export class UserDetailsComponent implements OnInit {
   username: String;
   email: String;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) {
+    this.username = jwt_decode(localStorage.getItem('token')).username;
+  }
 
   ngOnInit(): void {
-    this.userService.getUserData('galaa').subscribe((data) => {
+    this.userService.getUserData(this.username).subscribe((data) => {
       this.username = data['username'];
       this.email = data['email'];
     });

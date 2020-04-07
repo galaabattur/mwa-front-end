@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from '../service/login/login.service';
 import { Router } from '@angular/router';
+import * as jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'navbar',
@@ -43,8 +44,9 @@ export class NavbarComponent implements OnInit {
     this.service.login(formData).subscribe(
       (data) => {
         // success case
+        const tokenData = jwt_decode(data['token']);
         localStorage.setItem('token', data['token']);
-        localStorage.setItem('isAdmin', data['isAdmin']);
+        localStorage.setItem('isAdmin', tokenData.isAdmin);
         this.router.navigate(['/home']);
       },
       (error) => {

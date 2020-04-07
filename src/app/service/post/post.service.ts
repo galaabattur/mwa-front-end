@@ -18,4 +18,8 @@ export class PostService {
         console.log(response);
       });
   }
+
+  getPosts() {
+    console.log('getting posts');
+  }
 }
