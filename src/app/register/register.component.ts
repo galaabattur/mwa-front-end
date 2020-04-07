@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { LoginService } from '../service/login/login.service';
 import { Router } from '@angular/router';
+import UserResponse from '../models/UserResponse';
 
 @Component({
   selector: 'register',
@@ -26,8 +27,14 @@ export class RegisterComponent implements OnInit {
   register(formData) {
     this.service.register(formData).subscribe(
       (data) => {
-        localStorage.setItem('token', data['token']);
-        this.router.navigate(['/home']);
+        let userRes: UserResponse = JSON.parse(JSON.stringify(data));
+        localStorage.setItem('token', userRes.token);
+
+      if(userRes.isAdmin) {
+
+      } else {
+          this.router.navigate(['/home']);
+        }
       },
       (error) => {
         console.log(error.error);
