@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../service/user/user.service';
 import * as jwt_decode from 'jwt-decode';
 
@@ -8,6 +8,7 @@ import * as jwt_decode from 'jwt-decode';
   styleUrls: ['./user-details.component.css'],
 })
 export class UserDetailsComponent implements OnInit {
+  @Input() user;
   username: String;
   email: String;
 

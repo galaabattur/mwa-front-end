@@ -1,11 +1,32 @@
 <div class="container">
   <div class="border border-primary">
     <div class="new-post">
-      <form>
-        <input type="text" placeholder="search person" />
+      <form
+        [formGroup]="searchForm"
+        (ngSubmit)="searchUserName(searchForm.value)"
+      >
+        <div class="form-group">
+          <input
+            class="form-control"
+            formControlName="searchname"
+            name="searchname"
+            type="text"
+            placeholder="search person"
+          />
+        </div>
 
-        <button class="btn btn-primary" type="button">Search</button>
+        <button class="btn btn-primary" type="submit">Search</button>
       </form>
+    </div>
+    <div>
+      <!-- Result section -->
+      <div *ngFor="let user of searchResult">
+        <div class="border border-primary">
+          <div>username: {{ user.username }}</div>
+          <div>email: {{ user.email }}</div>
+          <div><button class="btn btn-primary">Follow</button></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
