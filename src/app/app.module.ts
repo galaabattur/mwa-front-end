@@ -13,6 +13,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { SampleWishComponent } from './sample-wish/sample-wish.component';
 import { NewsComponent } from './news/news.component';
+import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { PostsComponent } from './posts/posts.component';
 import { UserOperationComponent } from './user-operation/user-operation.component';
 import { AdvertiseComponent } from './advertise/advertise.component';
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
       { path: 'following', component: FollowingComponent },
       { path: 'followers', component: FollowersComponent },
       { path: 'news', component: NewsComponent },
+      { path: 'home-admin', component: HomeAdminComponent}
     ],
   },
   // { path: 'followers', component: FollowersComponent },
@@ -48,6 +50,7 @@ const appRoutes: Routes = [
     NotfoundComponent,
     SampleWishComponent,
     NewsComponent,
+    HomeAdminComponent,
     PostsComponent,
     UserOperationComponent,
     AdvertiseComponent,

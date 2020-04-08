@@ -18,8 +18,16 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     let token = localStorage.getItem('token');
+    let admin = localStorage.getItem('isAdmin');
+    console.log("-----------is admin "+admin);
     if (token) {
-      this.router.navigate(['/home/news']);
+      if(admin === 'true'){
+        console.log("true admin");
+        this.router.navigate(['/home/home-admin']);
+      } else {
+        console.log("false admin");
+        this.router.navigate(['/home/news']);
+      }
       this.currPage = 'home';
     } else {
       this.router.navigate(['/']);
