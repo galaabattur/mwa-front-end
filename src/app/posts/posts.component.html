@@ -1,9 +1,11 @@
 <div *ngFor="let post of postsArr">
   <div class="center">
-    <ul>
-      <li>{{ post.title }}</li>
-      <li>{{ post.body }}</li>
-      <li>{{ post.user._id }}</li>
-    </ul>
+    <div>
+      {{ post.user.username }}
+    </div>
+    <div class="border border-info rounded">
+      {{ post.body }}
+    </div>
+    <div>Likes:{{ post.likes.length }}</div>
   </div>
 </div>
