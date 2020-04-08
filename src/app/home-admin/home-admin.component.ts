@@ -18,12 +18,14 @@ export class HomeAdminComponent implements OnInit {
     this.form = new FormGroup({
       imgUrl: new FormControl(''),
       description: new FormControl(''),
+      minAge: new FormControl(''),
     });
   }
 //
   ngOnInit(): void {}
 
   newAdvertisement(formData) {
+    console.log("the data is "+JSON.stringify(formData));
     this.service.register(formData).subscribe(
       (data) => {
         this.router.navigate(['/home']);
