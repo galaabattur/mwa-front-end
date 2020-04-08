@@ -1,36 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../service/login/login.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
+import { AdvertisementService } from '../service/advertisement/advertisement.service';
+import { Router } from '@angular/router';
+import * as jwt_decode from 'jwt-decode';
 
 @Component({
-  selector: 'home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  selector: 'home-admin',
+  templateUrl: './home-admin.component.html',
+  styleUrls: ['./home-admin.component.css'],
 })
-export class HomeComponent implements OnInit {
-  currPage: String;
+export class HomeAdminComponent implements OnInit {
+  form: FormGroup;
+  formError: Boolean;
+  formErrorMessage: String;
 
-  constructor(
-    private service: LoginService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private service: AdvertisementService, private router: Router) {
+    this.form = new FormGroup({
+      imgUrl: new FormControl(''),
+      description: new FormControl(''),
+    });
+  }
 
-  ngOnInit(): void {
-    let token = localStorage.getItem('token');
-    let admin = localStorage.getItem('isAdmin');
-    console.log("-----------is admin "+admin);
-    if (token) {
-      if(admin === 'true'){
-        console.log("true admin");
-        this.router.navigate(['/home/home-admin']);
-      } else {
-        console.log("false admin");
-        this.router.navigate(['/home/news']);
+  ngOnInit(): void {}
+
+  newAdvertisement(formData) {
+    this.service.register(formData).subscribe(
+      (data) => {
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        console.log(error.error);
+        this.formErrorMessage = error.error;
+        this.formError = true;
       }
-      this.currPage = 'home';
-    } else {
-      this.router.navigate(['/']);
-    }
+    );
   }
 }
