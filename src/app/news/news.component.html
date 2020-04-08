@@ -1,28 +1,32 @@
 <div class="container border border-primary">
-  <div class="row align-items-center">
-    <form
-      [formGroup]="form"
-      (ngSubmit)="newPost(form.value)"
-      class="form-inline"
-    >
-      <div class="form-row align-items-center">
-        <div class="form-group">
-          <label for="newPost">New Post:</label>
-          <input
-            formControlName="postname"
-            type="text"
-            name="postname"
-            class="form-control"
-          />
-        </div>
+  <div class="row">
+    <div class="row align-items-center new-post">
+      <form
+        [formGroup]="form"
+        (ngSubmit)="newPost(form.value)"
+        class="form-inline"
+      >
+        <div class="form-row align-items-center">
+          <div class="form-group">
+            <label for="postname">New Post:</label>
+            <input
+              formControlName="postname"
+              type="text"
+              name="postname"
+              class="form-control"
+            />
+          </div>
 
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Send</button>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Send</button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
   <div class="row">
-    <posts></posts>
+    <div style="width: 100%;">
+      <posts [postsArr]="posts"></posts>
+    </div>
   </div>
 </div>
