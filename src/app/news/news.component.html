@@ -7,7 +7,7 @@
     >
       <div class="form-row align-items-center">
         <div class="form-group">
-          <label for="newPost">New Post:</label>
+          <label for="postname">New Post:</label>
           <input
             formControlName="postname"
             type="text"
@@ -23,6 +23,6 @@
     </form>
   </div>
   <div class="row">
-    <posts></posts>
+    <posts [postsArr]="posts"></posts>
   </div>
 </div>

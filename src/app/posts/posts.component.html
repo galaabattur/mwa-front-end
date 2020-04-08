@@ -1,8 +1,9 @@
-<div *ngFor="let post of posts">
+<div *ngFor="let post of postsArr">
   <div class="center">
-    {{ post.title }}
-    {{ post.body }}
-    {{ post.comments }}
-    {{ post.likes }}
+    <ul>
+      <li>{{ post.title }}</li>
+      <li>{{ post.body }}</li>
+      <li>{{ post.user._id }}</li>
+    </ul>
   </div>
 </div>
