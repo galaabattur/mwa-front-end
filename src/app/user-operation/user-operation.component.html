@@ -24,7 +24,7 @@
         >Home</a
       >
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="!isAdmin">
       <a
         routerLink="/home/following"
         routerLinkActive="active"
@@ -34,7 +34,7 @@
         >Following</a
       >
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="!isAdmin">
       <a
         routerLink="/home/followers"
         routerLinkActive="active"
