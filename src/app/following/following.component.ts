@@ -19,8 +19,8 @@ export class FollowingComponent implements OnInit {
   followText = 'Follow';
 
   constructor(private userService: UserService) {
-    this.header = new HttpHeaders({ token: localStorage.getItem('token') });
-    this.username = jwt_decode(localStorage.getItem('token')).username;
+    // this.header = new HttpHeaders({ token: localStorage.getItem('token') });
+    // this.username = jwt_decode(localStorage.getItem('token')).username;
     this.searchForm = new FormGroup({
       searchname: new FormControl(),
     });
@@ -31,7 +31,7 @@ export class FollowingComponent implements OnInit {
   }
 
   searchUserName(formData) {
-    this.userService.searchUser(formData, this.header).subscribe(
+    this.userService.searchUser(formData).subscribe(
       (data) => {
         console.log(data);
         if (data['users'].length == 0) {
@@ -48,7 +48,7 @@ export class FollowingComponent implements OnInit {
   }
   follow(data) {
     const sendData = { follower: data.innerHTML, username: this.username };
-    this.userService.addFollower(sendData, this.header).subscribe(
+    this.userService.addFollower(sendData).subscribe(
       (data) => {
         console.log(data);
         if (data['msg'] === 'success') {

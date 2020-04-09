@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../service/user/user.service';
 import * as jwt_decode from 'jwt-decode';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'user-details',
@@ -9,17 +10,22 @@ import * as jwt_decode from 'jwt-decode';
 })
 export class UserDetailsComponent implements OnInit {
   @Input() user;
-  username: String;
-  email: String;
-
-  constructor(private userService: UserService) {
-    this.username = jwt_decode(localStorage.getItem('token')).username;
-  }
+  userDetails;
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.userService.getUserData(this.username).subscribe((data) => {
-      this.username = data['username'];
-      this.email = data['email'];
-    });
+    this.getUserDetails();
+  }
+
+  getUserDetails() {
+    this.userService.getUserData().subscribe(
+      (data) => {
+        this.userDetails = data;
+        console.log('userdetails', this.userDetails);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

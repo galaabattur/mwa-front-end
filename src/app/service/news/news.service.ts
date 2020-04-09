@@ -13,8 +13,11 @@ import * as jwt_decode from 'jwt-decode';
 })
 export class NewsService {
   private postUrl = 'http://localhost:3000/api/post';
+  header;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.header = new HttpHeaders({ token: localStorage.getItem('token') });
+  }
 
   submitPost(data, header) {
     this.http

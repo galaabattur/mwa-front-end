@@ -6,6 +6,7 @@ import {
 } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import * as jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -16,38 +17,40 @@ export class UserService {
   private addFollowerUrl = 'http://localhost:3000/api/user/follower';
 
   private token: String;
-  private username: String;
+  private header;
+  private username;
 
   constructor(private http: HttpClient) {
     this.token = localStorage.getItem('token').toString();
-  }
-
-  getUserData(username) {
-    const header = new HttpHeaders({
+    this.username = jwt_decode(localStorage.getItem('token')).username;
+    this.header = new HttpHeaders({
       token: this.token.toString(),
     });
-    return this.http.get(this.getUserDataUrl + '/' + username, {
-      headers: header,
+  }
+
+  getUserData() {
+    return this.http.get(this.getUserDataUrl + '/' + this.username, {
+      headers: this.header,
     });
   }
 
-  searchUser(data, header) {
+  searchUser(data) {
     return this.http
       .post(
         this.searchUserUrl,
         { username: data['searchname'] },
-        { headers: header }
+        { headers: this.header }
       )
       .pipe(catchError(this.handleError));
   }
 
-  addFollower(data, header) {
+  addFollower(data) {
     return this.http
       .post(
         this.addFollowerUrl + '/' + data['username'],
         { follower: data['follower'] },
         {
-          headers: header,
+          headers: this.header,
         }
       )
       .pipe(catchError(this.handleError));
