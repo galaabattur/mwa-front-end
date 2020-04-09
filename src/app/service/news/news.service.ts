@@ -27,12 +27,12 @@ export class NewsService {
       });
   }
 
-  getPosts(header) {
+  getPosts() {
     const username = jwt_decode(localStorage.getItem('token')).username;
     console.log(username);
     console.log(this.postUrl + '/' + username);
     return this.http
-      .get(this.postUrl + '/' + username, { headers: header })
+      .get(this.postUrl + '/' + username, { headers: this.header })
       .pipe(catchError(this.handleError));
   }
 

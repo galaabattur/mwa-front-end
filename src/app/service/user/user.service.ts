@@ -17,40 +17,34 @@ export class UserService {
   private addFollowerUrl = 'http://localhost:3000/api/user/follower';
 
   private token: String;
-  private header;
-  private username;
 
   constructor(private http: HttpClient) {
     this.token = localStorage.getItem('token').toString();
-    this.username = jwt_decode(localStorage.getItem('token')).username;
-    this.header = new HttpHeaders({
-      token: this.token.toString(),
+  }
+
+  getUserData(username, header) {
+    return this.http.get(this.getUserDataUrl + '/' + username, {
+      headers: header,
     });
   }
 
-  getUserData() {
-    return this.http.get(this.getUserDataUrl + '/' + this.username, {
-      headers: this.header,
-    });
-  }
-
-  searchUser(data) {
+  searchUser(data, header) {
     return this.http
       .post(
         this.searchUserUrl,
         { username: data['searchname'] },
-        { headers: this.header }
+        { headers: header }
       )
       .pipe(catchError(this.handleError));
   }
 
-  addFollower(data) {
+  addFollower(data, header) {
     return this.http
       .post(
         this.addFollowerUrl + '/' + data['username'],
         { follower: data['follower'] },
         {
-          headers: this.header,
+          headers: header,
         }
       )
       .pipe(catchError(this.handleError));

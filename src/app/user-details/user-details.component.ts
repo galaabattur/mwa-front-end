@@ -11,14 +11,23 @@ import { HttpHeaders } from '@angular/common/http';
 export class UserDetailsComponent implements OnInit {
   @Input() user;
   userDetails;
-  constructor(private userService: UserService) {}
+  username;
+  header;
+  token;
+  constructor(private userService: UserService) {
+    this.token = localStorage.getItem('token').toString();
+    this.username = jwt_decode(localStorage.getItem('token')).username;
+    this.header = new HttpHeaders({
+      token: this.token.toString(),
+    });
+  }
 
   ngOnInit(): void {
     this.getUserDetails();
   }
 
   getUserDetails() {
-    this.userService.getUserData().subscribe(
+    this.userService.getUserData(this.username, this.header).subscribe(
       (data) => {
         this.userDetails = data;
         console.log('userdetails', this.userDetails);
