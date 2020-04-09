@@ -16,15 +16,34 @@
         </div>
 
         <button class="btn btn-primary" type="submit">Search</button>
+        <div *ngIf="noresult">
+          <div class="alert alert-warning">No result</div>
+        </div>
       </form>
     </div>
     <div>
       <!-- Result section -->
       <div *ngFor="let user of searchResult">
         <div class="border border-primary">
-          <div>username: {{ user.username }}</div>
-          <div>email: {{ user.email }}</div>
-          <div><button class="btn btn-primary">Follow</button></div>
+          <div class="row user-section">
+            <div class="border border-dark rounded-pill">
+              <div>
+                username: <span #username>{{ user.username }}</span>
+              </div>
+              <div>email: {{ user.email }}</div>
+            </div>
+            <div>
+              <div>
+                <button
+                  [class.btn-secondary]="followed"
+                  class="btn btn-primary"
+                  (click)="follow(username)"
+                >
+                  {{ followText }}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

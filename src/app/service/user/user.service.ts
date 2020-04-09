@@ -13,6 +13,7 @@ import { throwError } from 'rxjs';
 export class UserService {
   private getUserDataUrl = 'http://localhost:3000/api/user';
   private searchUserUrl = 'http://localhost:3000/api/user/search';
+  private addFollowerUrl = 'http://localhost:3000/api/user/follower';
 
   private token: String;
   private username: String;
@@ -36,6 +37,18 @@ export class UserService {
         this.searchUserUrl,
         { username: data['searchname'] },
         { headers: header }
+      )
+      .pipe(catchError(this.handleError));
+  }
+
+  addFollower(data, header) {
+    return this.http
+      .post(
+        this.addFollowerUrl + '/' + data['username'],
+        { follower: data['follower'] },
+        {
+          headers: header,
+        }
       )
       .pipe(catchError(this.handleError));
   }
