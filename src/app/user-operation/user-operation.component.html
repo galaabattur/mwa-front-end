@@ -14,7 +14,8 @@
         >User profile</a
       >
     </li>
-    <li class="nav-item">
+    <!--options user-->
+    <li class="nav-item" *ngIf="!isAdmin">
       <a
         routerLink="/home/news"
         class="nav-link"
@@ -42,6 +43,27 @@
         role="tab"
         (click)="changeToFollowers()"
         >Followers</a
+      >
+    </li>
+    <!--options admin-->
+    <li class="nav-item" *ngIf="isAdmin">
+      <a
+        routerLink="/home/home-admin"
+        routerLinkActive="active"
+        class="nav-link"
+        role="tab"
+        (click)="changeToNewAdvertisement()"
+        >New Advertisement</a
+      >
+    </li>
+    <li class="nav-item" *ngIf="isAdmin">
+      <a
+        routerLink="/home/unhealthy-words"
+        routerLinkActive="active"
+        class="nav-link"
+        role="tab"
+        (click)="changeToNewUnhealthyWords()"
+        >New Unhealthy Words</a
       >
     </li>
     <li class="nav-item">

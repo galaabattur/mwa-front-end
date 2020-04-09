@@ -36,6 +36,14 @@ export class UserOperationComponent implements OnInit {
     return this.router.navigate(['home/userdetails']);
   }
 
+  changeToNewAdvertisement() {
+    return this.router.navigate(['home/home-admin']);
+  }
+
+  changeToNewUnhealthyWords() {
+    return this.router.navigate(['home/unhealthy-words']);
+  }
+
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('isAdmin');

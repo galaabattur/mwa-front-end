@@ -20,6 +20,7 @@ import { AdvertiseComponent } from './advertise/advertise.component';
 import { FollowersComponent } from './followers/followers.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { FollowingComponent } from './following/following.component';
+import { UnhealthyWordsComponent } from './unhealthy-words/unhealthy-words.component';
 
 const appRoutes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
       { path: 'following', component: FollowingComponent },
       { path: 'followers', component: FollowersComponent },
       { path: 'news', component: NewsComponent },
-      { path: 'home-admin', component: HomeAdminComponent}
+      { path: 'home-admin', component: HomeAdminComponent},
+      { path: 'unhealthy-words', component: UnhealthyWordsComponent}
     ],
   },
   // { path: 'followers', component: FollowersComponent },
