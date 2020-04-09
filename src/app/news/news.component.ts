@@ -14,6 +14,7 @@ export class NewsComponent implements OnInit {
   private header: HttpHeaders;
 
   constructor(private newsService: NewsService) {
+    this.header = new HttpHeaders({ token: localStorage.getItem('token') });
     this.form = new FormGroup({
       postname: new FormControl(''),
     });
@@ -28,7 +29,7 @@ export class NewsComponent implements OnInit {
   }
 
   getPosts() {
-    this.newsService.getPosts().subscribe(
+    this.newsService.getPosts(this.header).subscribe(
       (data) => {
         console.log(data);
         this.posts = data;
