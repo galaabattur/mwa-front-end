@@ -21,6 +21,7 @@ export class RegisterComponent implements OnInit {
       password: new FormControl(''),
       email: new FormControl(),
       birthday: new FormControl(),
+      country: new FormControl(),
     });
   }
 
