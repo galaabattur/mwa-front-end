@@ -19,6 +19,7 @@ export class HomeAdminComponent implements OnInit {
       imgUrl: new FormControl(''),
       description: new FormControl(''),
       minAge: new FormControl(''),
+      country: new FormControl(''),
     });
   }
 //
