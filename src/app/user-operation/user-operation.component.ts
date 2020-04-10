@@ -8,13 +8,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class UserOperationComponent implements OnInit {
   username: String;
-  isAdmin = localStorage.getItem('isAdmin')=='true' ? true : false;
-  constructor(private router: Router, private route: ActivatedRoute) {
-    console.log("is admin : "+localStorage.getItem('isAdmin'));
-    
-  }
- 
-  
+  isAdmin = localStorage.getItem('isAdmin') == 'true' ? true : false;
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.username = localStorage.getItem('token');

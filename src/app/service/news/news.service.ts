@@ -26,8 +26,6 @@ export class NewsService {
 
   getPosts(header) {
     const username = jwt_decode(localStorage.getItem('token')).username;
-    console.log(username);
-    console.log(this.postUrl + '/' + username);
     return this.http
       .get(this.postUrl + '/' + username, { headers: header })
       .pipe(catchError(this.handleError));
