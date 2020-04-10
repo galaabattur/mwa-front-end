@@ -20,8 +20,12 @@ import { AdvertiseComponent } from './advertise/advertise.component';
 import { FollowersComponent } from './followers/followers.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { FollowingComponent } from './following/following.component';
+<<<<<<< HEAD
 import { UnhealthyWordsComponent } from './unhealthy-words/unhealthy-words.component';
 import { FileUploadModule } from 'ng2-file-upload';
+=======
+import { TableComponent } from './table/table.component';
+>>>>>>> f3554258c9f304022934378b9b2273f4d708b272
 
 const appRoutes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -33,8 +37,9 @@ const appRoutes: Routes = [
       { path: 'following', component: FollowingComponent },
       { path: 'followers', component: FollowersComponent },
       { path: 'news', component: NewsComponent },
-      { path: 'home-admin', component: HomeAdminComponent },
-      { path: 'unhealthy-words', component: UnhealthyWordsComponent },
+      { path: 'home-admin', component: HomeAdminComponent},
+      { path: 'app-table', component: TableComponent}
+
     ],
   },
   // { path: 'followers', component: FollowersComponent },
@@ -60,6 +65,7 @@ const appRoutes: Routes = [
     FollowersComponent,
     UserDetailsComponent,
     FollowingComponent,
+    TableComponent,
   ],
   imports: [
     BrowserModule,

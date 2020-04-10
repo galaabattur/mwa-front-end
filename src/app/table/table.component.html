@@ -1,0 +1,43 @@
+<div>
+    <h1>Unhealthy words</h1>
+    <div class="row align-items-center">
+        <form
+          [formGroup]="form"
+          (ngSubmit)="newHealthyWord(form.value)"
+          class="form-inline"
+        >
+          <div class="form-row align-items-center">
+            <div class="form-group">
+              <label>Unhealthy word:</label>
+              <input
+                formControlName="unhealthyWord"
+                type="text"
+                name="unhealthyWord"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Send</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    <table>
+       <thead>
+          <tr>
+             <th style="display:none;">#ID</th>
+             <th>Word</th>
+          </tr>
+       </thead>
+       <tbody>
+          <tr *ngFor="let item of ItemsArray">
+             <th style="display:none;">{{ item.id }}</th>
+             <td>{{ item.word }}</td>
+             <td>
+                <button type="button" >Edit</button>
+                <button type="button" >Delete</button>
+             </td>
+          </tr>
+       </tbody>
+    </table>
+ </div>
