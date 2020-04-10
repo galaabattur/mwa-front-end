@@ -31,11 +31,10 @@ export class NewsComponent implements OnInit {
   getPosts() {
     this.newsService.getPosts(this.header).subscribe(
       (data) => {
-        console.log(data);
         this.posts = data;
       },
       (error) => {
-        console.log(error);
+        alert(error);
       }
     );
   }

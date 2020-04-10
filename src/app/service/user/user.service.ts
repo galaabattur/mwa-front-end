@@ -16,6 +16,7 @@ export class UserService {
   private getUserDataUrl = 'http://localhost:3000/api/user';
   private searchUserUrl = 'http://localhost:3000/api/user/search';
   private addFollowerUrl = 'http://localhost:3000/api/user/follower';
+  private getFollowerUrl = 'http://localhost:3000/api/user/follower';
 
   private token: String;
 
@@ -23,8 +24,8 @@ export class UserService {
     this.token = localStorage.getItem('token').toString();
   }
 
-  getUserData(username, header) {
-    return this.http.get(this.getUserDataUrl + '/' + username, {
+  getUserData(header) {
+    return this.http.get(this.getUserDataUrl, {
       headers: header,
     });
   }
@@ -42,7 +43,7 @@ export class UserService {
   addFollower(data, header) {
     return this.http
       .post(
-        this.addFollowerUrl + '/' + data['username'],
+        this.addFollowerUrl,
         { follower: data['follower'] },
         { headers: header }
       )
@@ -60,5 +61,14 @@ export class UserService {
     return throwError(error);
   }
 
-  uploadPhoto(photo, username, header) {}
+  getFollowingList(header) {
+    this.http.get(this.getFollowerUrl, { headers: header }).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 }

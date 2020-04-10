@@ -17,13 +17,19 @@ export class FollowingComponent implements OnInit {
   username: string;
   followed = false;
   followText = 'Follow';
+  _id: String;
 
   constructor(private userService: UserService) {
     this.header = new HttpHeaders({ token: localStorage.getItem('token') });
     this.username = jwt_decode(localStorage.getItem('token')).username;
+    this._id = jwt_decode(localStorage.getItem('token'))._id;
     this.searchForm = new FormGroup({
       searchname: new FormControl(),
     });
+  }
+
+  getFollowingList() {
+    this.userService.getFollowingList(this.header);
   }
 
   get searchname() {
@@ -62,5 +68,7 @@ export class FollowingComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getFollowingList();
+  }
 }

@@ -58,12 +58,10 @@ export class UserDetailsComponent implements OnInit {
   }
 
   getUserDetails() {
-    this.userService.getUserData(this.username, this.header).subscribe(
+    this.userService.getUserData(this.header).subscribe(
       (data) => {
         data['photo'] = this.photoBaseUrl + data['photo'];
         this.userDetails = data;
-
-        console.log('userdetails', this.userDetails);
       },
       (error) => {
         console.log(error);
