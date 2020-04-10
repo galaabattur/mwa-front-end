@@ -12,7 +12,7 @@ export class TableComponent implements OnInit {
   formError: Boolean;
   formErrorMessage: String;
 
-  ItemsArray = [{id: 1, name: "Jimmy", email:"n", phone: "01", address:"addres"}];
+  ItemsArray = [];
   constructor(private service: UnhelthyWordService) {
     this.form = new FormGroup({
       unhealthyWord: new FormControl(''),
@@ -22,7 +22,7 @@ export class TableComponent implements OnInit {
   newHealthyWord(formData) {
     this.service.register(formData).subscribe(
       (data) => {
-        
+        this.ItemsArray.push({id: 1, word: formData.unhealthyWord});
       },
       (error) => {
         console.log(error.error);
