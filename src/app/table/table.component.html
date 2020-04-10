@@ -25,13 +25,13 @@
     <table>
        <thead>
           <tr>
-             <th>#ID</th>
+             <th style="display:none;">#ID</th>
              <th>Word</th>
           </tr>
        </thead>
        <tbody>
           <tr *ngFor="let item of ItemsArray">
-             <th>{{ item.id }}</th>
+             <th style="display:none;">{{ item.id }}</th>
              <td>{{ item.word }}</td>
              <td>
                 <button type="button" >Edit</button>

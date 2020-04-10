@@ -22,7 +22,7 @@ export class TableComponent implements OnInit {
   newHealthyWord(formData) {
     this.service.register(formData).subscribe(
       (data) => {
-        this.ItemsArray.push({id: 1, word: formData.unhealthyWord});
+        this.ItemsArray.push({id: data["unhealthyWordClass1"]["_id"], word: data["unhealthyWordClass1"]["unhealthyWord"]});
       },
       (error) => {
         console.log(error.error);
