@@ -3,25 +3,17 @@
     <tr>
       <td>Avatar:</td>
       <td>
-        Photo
-        <form class="form-group" [formGroup]="myForm" (ngSubmit)="uploadFile()">
-          <div class="custom-file">
-            <input
-              formControlName="image"
-              class="form-control custom-file-input"
-              type="file"
-              name="image"
-              id="image"
-              (change)="onFileChange($event)"
-            />
-            <label class="custom-file-label" for="inputGroupFile01">
-              Choose file
-            </label>
-          </div>
-          <div>
-            <button class="btn btn-primary" type="submit">Upload</button>
-          </div>
-        </form>
+        <img class="img-fit" [src]="userDetails.photo" />
+        <br />
+        <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="uploader.uploadAll()"
+          [disabled]="!uploader.getNotUploadedItems().length"
+        >
+          Upload
+        </button>
       </td>
     </tr>
     <tr>

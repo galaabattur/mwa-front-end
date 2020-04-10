@@ -21,6 +21,7 @@ import { FollowersComponent } from './followers/followers.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { FollowingComponent } from './following/following.component';
 import { UnhealthyWordsComponent } from './unhealthy-words/unhealthy-words.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 const appRoutes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -32,14 +33,14 @@ const appRoutes: Routes = [
       { path: 'following', component: FollowingComponent },
       { path: 'followers', component: FollowersComponent },
       { path: 'news', component: NewsComponent },
-      { path: 'home-admin', component: HomeAdminComponent},
-      { path: 'unhealthy-words', component: UnhealthyWordsComponent}
+      { path: 'home-admin', component: HomeAdminComponent },
+      { path: 'unhealthy-words', component: UnhealthyWordsComponent },
     ],
   },
   // { path: 'followers', component: FollowersComponent },
   // { path: 'following', component: FollowingComponent },
   { path: 'user', component: UserDetailsComponent },
-  { path: '**', component: NotfoundComponent },
+  //{ path: '**', component: NotfoundComponent },
 ];
 
 @NgModule({
@@ -67,6 +68,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
+    FileUploadModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

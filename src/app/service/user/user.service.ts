@@ -7,6 +7,7 @@ import {
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import * as jwt_decode from 'jwt-decode';
+import { FileUploader } from 'ng2-file-upload';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,6 @@ export class UserService {
   private getUserDataUrl = 'http://localhost:3000/api/user';
   private searchUserUrl = 'http://localhost:3000/api/user/search';
   private addFollowerUrl = 'http://localhost:3000/api/user/follower';
-  private uploadPhotoUrl = 'http://localhost:3000/api/user/photo';
 
   private token: String;
 
@@ -60,12 +60,5 @@ export class UserService {
     return throwError(error);
   }
 
-  uploadPhoto(photo, username, header) {
-    this.http
-      .post(this.uploadPhotoUrl + '/' + username, photo, { headers: header })
-      .subscribe(
-        (data) => console.log(data),
-        (error) => console.log(error)
-      );
-  }
+  uploadPhoto(photo, username, header) {}
 }
