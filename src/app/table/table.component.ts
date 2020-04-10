@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { UnhelthyWordService } from '../service/unhealthyword/unhealthyword.service';
 
 @Component({
   selector: 'app-table',
@@ -6,16 +8,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
+  form: FormGroup;
+  formError: Boolean;
+  formErrorMessage: String;
 
   ItemsArray = [{id: 1, name: "Jimmy", email:"n", phone: "01", address:"addres"}];
-  /*
-  id }}</th>
-             <td>{{ item.name }}</td>
-             <td>{{ item.email }}</td>
-             <td>{{ item.phone}}</td>
-             <td>{{ item.address
-  */
-  constructor() { }
+  constructor(private service: UnhelthyWordService) {
+    this.form = new FormGroup({
+      unhealthyWord: new FormControl(''),
+    });
+  }
+
+  newHealthyWord(formData) {
+    this.service.register(formData).subscribe(
+      (data) => {
+        
+      },
+      (error) => {
+        console.log(error.error);
+        this.formErrorMessage = error.error;
+        this.formError = true;
+      }
+    );
+  }
 
   ngOnInit(): void {
   }
