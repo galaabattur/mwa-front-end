@@ -41,7 +41,7 @@ export class UserOperationComponent implements OnInit {
   }
 
   changeToNewUnhealthyWords() {
-    return this.router.navigate(['home/unhealthy-words']);
+    return this.router.navigate(['home/app-table']);
   }
 
   logout() {

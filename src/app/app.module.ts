@@ -21,6 +21,7 @@ import { FollowersComponent } from './followers/followers.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { FollowingComponent } from './following/following.component';
 import { UnhealthyWordsComponent } from './unhealthy-words/unhealthy-words.component';
+import { TableComponent } from './table/table.component';
 
 const appRoutes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -33,7 +34,8 @@ const appRoutes: Routes = [
       { path: 'followers', component: FollowersComponent },
       { path: 'news', component: NewsComponent },
       { path: 'home-admin', component: HomeAdminComponent},
-      { path: 'unhealthy-words', component: UnhealthyWordsComponent}
+      { path: 'unhealthy-words', component: UnhealthyWordsComponent},
+      { path: 'app-table', component: TableComponent}
     ],
   },
   // { path: 'followers', component: FollowersComponent },
@@ -59,6 +61,7 @@ const appRoutes: Routes = [
     FollowersComponent,
     UserDetailsComponent,
     FollowingComponent,
+    TableComponent,
   ],
   imports: [
     BrowserModule,
