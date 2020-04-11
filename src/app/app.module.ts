@@ -17,12 +17,13 @@ import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { PostsComponent } from './posts/posts.component';
 import { UserOperationComponent } from './user-operation/user-operation.component';
 import { AdvertiseComponent } from './advertise/advertise.component';
-import { FollowersComponent } from './followers/followers.component';
+
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { FollowingComponent } from './following/following.component';
 
 import { TableComponent } from './table/table.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { UserblockComponent } from './userblock/userblock.component';
 
 const appRoutes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -32,13 +33,12 @@ const appRoutes: Routes = [
     children: [
       { path: 'userdetails', component: UserDetailsComponent },
       { path: 'following', component: FollowingComponent },
-      { path: 'followers', component: FollowersComponent },
       { path: 'news', component: NewsComponent },
       { path: 'home-admin', component: HomeAdminComponent },
       { path: 'app-table', component: TableComponent },
     ],
   },
-  // { path: 'followers', component: FollowersComponent },
+
   // { path: 'following', component: FollowingComponent },
   { path: 'user', component: UserDetailsComponent },
   //{ path: '**', component: NotfoundComponent },
@@ -58,10 +58,11 @@ const appRoutes: Routes = [
     PostsComponent,
     UserOperationComponent,
     AdvertiseComponent,
-    FollowersComponent,
+
     UserDetailsComponent,
     FollowingComponent,
     TableComponent,
+    UserblockComponent,
   ],
   imports: [
     BrowserModule,

@@ -18,6 +18,7 @@ export class FollowingComponent implements OnInit {
   followed = false;
   followText = 'Follow';
   _id: String;
+  followers;
 
   constructor(private userService: UserService) {
     this.header = new HttpHeaders({ token: localStorage.getItem('token') });
@@ -29,7 +30,15 @@ export class FollowingComponent implements OnInit {
   }
 
   getFollowingList() {
-    this.userService.getFollowingList(this.header);
+    this.userService.getFollowingList(this.header).subscribe(
+      (data) => {
+        console.log(data);
+        this.followers = data['followers'];
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   get searchname() {

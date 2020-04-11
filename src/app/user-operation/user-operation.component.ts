@@ -15,10 +15,6 @@ export class UserOperationComponent implements OnInit {
     this.username = localStorage.getItem('token');
   }
 
-  changeToFollowers() {
-    return this.router.navigate(['home/followers']);
-  }
-
   changeToFollowing() {
     return this.router.navigate(['home/following']);
   }

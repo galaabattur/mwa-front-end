@@ -62,13 +62,8 @@ export class UserService {
   }
 
   getFollowingList(header) {
-    this.http.get(this.getFollowerUrl, { headers: header }).subscribe(
-      (data) => {
-        console.log(data);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    return this.http
+      .get(this.getFollowerUrl, { headers: header })
+      .pipe(catchError(this.handleError));
   }
 }

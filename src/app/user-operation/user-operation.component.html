@@ -35,16 +35,7 @@
         >Following</a
       >
     </li>
-    <li class="nav-item" *ngIf="!isAdmin">
-      <a
-        routerLink="/home/followers"
-        routerLinkActive="active"
-        class="nav-link"
-        role="tab"
-        (click)="changeToFollowers()"
-        >Followers</a
-      >
-    </li>
+
     <!--options admin-->
     <li class="nav-item" *ngIf="isAdmin">
       <a
