@@ -79,6 +79,9 @@
       <div *ngIf="loginFailed" class="alert alert-danger">
         Username or password is incorrect
       </div>
+      <div *ngIf="isEnabled" class="alert alert-danger">
+        account disabled
+      </div>
     </div>
   </div>
 </nav>

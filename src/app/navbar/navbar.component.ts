@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   invalidLogin: boolean;
   loginFailed: boolean;
   notLoggedIn = true;
+  isEnabled: boolean;
 
   constructor(private router: Router, private service: LoginService) {
     this.form = new FormGroup({
@@ -45,9 +46,13 @@ export class NavbarComponent implements OnInit {
       (data) => {
         // success case
         const tokenData = jwt_decode(data['token']);
-        localStorage.setItem('token', data['token']);
-        localStorage.setItem('isAdmin', tokenData.isAdmin);
-        this.router.navigate(['/home']);
+        if(tokenData["isEnabled"]){
+          localStorage.setItem('token', data['token']);
+          localStorage.setItem('isAdmin', tokenData.isAdmin);
+          this.router.navigate(['/home']);
+        } else {
+          this.isEnabled = true;
+        }
       },
       (error) => {
         // Error section
