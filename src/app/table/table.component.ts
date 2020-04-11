@@ -22,7 +22,7 @@ export class TableComponent implements OnInit {
   newHealthyWord(formData) {
     this.service.register(formData).subscribe(
       (data) => {
-        this.ItemsArray.push({id: data["unhealthyWordClass1"]["_id"], word: data["unhealthyWordClass1"]["unhealthyWord"]});
+        this.ItemsArray.push({_id: data["unhealthyWordClass1"]["_id"], unhealthyWord: data["unhealthyWordClass1"]["unhealthyWord"]});
       },
       (error) => {
         console.log(error.error);
@@ -33,6 +33,15 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.service.getUnhealthyWord().subscribe(
+      (data) => {
+        console.log(data["unhealthyWordsList"]);
+        this.ItemsArray = data["unhealthyWordsList"];
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
 }

@@ -31,10 +31,9 @@
        </thead>
        <tbody>
           <tr *ngFor="let item of ItemsArray">
-             <th style="display:none;">{{ item.id }}</th>
-             <td>{{ item.word }}</td>
+             <th style="display:none;">{{ item._id }}</th>
+             <td>{{ item.unhealthyWord }}</td>
              <td>
-                <button type="button" >Edit</button>
                 <button type="button" >Delete</button>
              </td>
           </tr>

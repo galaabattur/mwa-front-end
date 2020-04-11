@@ -17,6 +17,12 @@ export class UnhelthyWordService {
       .pipe(catchError(this.handleError));
   }
 
+  getUnhealthyWord() {
+    return this.http
+      .get(this.unhealthyWordUrl)
+      .pipe(catchError(this.handleError));
+  }
+
   private handleError(error) {
     if (error instanceof HttpErrorResponse) {
       // Server side error
