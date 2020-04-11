@@ -14,6 +14,7 @@ export class FollowingComponent implements OnInit {
   private header: HttpHeaders;
   searchResult: any[];
   noresult: boolean = false;
+  showResult: boolean = false;
   username: string;
   followed = false;
   followText = 'Follow';
@@ -34,6 +35,9 @@ export class FollowingComponent implements OnInit {
       (data) => {
         console.log(data);
         this.followers = data['followers'];
+        for (let i = 0; i < this.followers.length; i++) {
+          this.followers[i].flwdFlg = true;
+        }
       },
       (error) => {
         console.log(error);
@@ -49,11 +53,15 @@ export class FollowingComponent implements OnInit {
     this.userService.searchUser(formData, this.header).subscribe(
       (data) => {
         console.log(data);
+
+        console.log(data['users'][0].flwdFlg);
         if (data['users'].length == 0) {
           this.noresult = !this.noresult;
+          // this.noresult = true;
         } else {
           this.searchResult = data['users'];
           this.noresult = false;
+          this.showResult = true;
         }
       },
       (error) => {
@@ -61,21 +69,21 @@ export class FollowingComponent implements OnInit {
       }
     );
   }
-  follow(data) {
-    const sendData = { follower: data.innerHTML, username: this.username };
-    this.userService.addFollower(sendData, this.header).subscribe(
-      (data) => {
-        console.log(data);
-        if (data['msg'] === 'success') {
-          this.followed = true;
-          this.followText = 'Unfollow';
-        }
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
+  // follow(data) {
+  //   const sendData = { follower: data.innerHTML, username: this.username };
+  //   this.userService.addFollower(sendData, this.header).subscribe(
+  //     (data) => {
+  //       console.log(data);
+  //       if (data['msg'] === 'success') {
+  //         this.followed = true;
+  //         this.followText = 'Unfollow';
+  //       }
+  //     },
+  //     (error) => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
 
   ngOnInit(): void {
     this.getFollowingList();

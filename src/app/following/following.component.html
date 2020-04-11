@@ -23,14 +23,22 @@
     </div>
     <div>
       <!-- Result section -->
+      <div *ngIf="showResult">
+        <h3>Search Result:</h3>
+        <userblock [users]="searchResult"></userblock>
+      </div>
+      <!--
       <div *ngFor="let user of searchResult">
         <div class="border border-primary">
           <div class="row user-section">
-            <div class="border border-dark rounded-pill">
+            <div class="border border-dark">
+              <div>
+                <img class="img-fit" [src]="user.photo" />
+              </div>
               <div>
                 username: <span #username>{{ user.username }}</span>
               </div>
-              <div>email: {{ user.email }}</div>
+              <div>Country: {{ user.country }}</div>
             </div>
             <div>
               <div>
@@ -45,7 +53,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
     </div>
     <div>
       <h3>Following list</h3>
