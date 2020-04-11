@@ -6,8 +6,6 @@ import {
 } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-import * as jwt_decode from 'jwt-decode';
-import { FileUploader } from 'ng2-file-upload';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +15,7 @@ export class UserService {
   private searchUserUrl = 'http://localhost:3000/api/user/search';
   private addFollowerUrl = 'http://localhost:3000/api/user/follower';
   private getFollowerUrl = 'http://localhost:3000/api/user/follower';
+  private postUnfollowUrl = 'http://localhost:3000/api/user/unfollow';
 
   private token: String;
 
@@ -41,12 +40,9 @@ export class UserService {
   }
 
   addFollower(data, header) {
+    console.log(data);
     return this.http
-      .post(
-        this.addFollowerUrl,
-        { follower: data['follower'] },
-        { headers: header }
-      )
+      .post(this.addFollowerUrl, { follower: data }, { headers: header })
       .pipe(catchError(this.handleError));
   }
 
@@ -65,5 +61,17 @@ export class UserService {
     return this.http
       .get(this.getFollowerUrl, { headers: header })
       .pipe(catchError(this.handleError));
+  }
+
+  unfollow(unfollowed, header) {
+    const data = { unfollow: unfollowed };
+    console.log(header);
+    console.log(data);
+    this.http.post(this.postUnfollowUrl, data, { headers: header }).subscribe(
+      (data) => console.log(data),
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

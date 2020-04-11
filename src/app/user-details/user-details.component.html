@@ -3,7 +3,9 @@
     <tr>
       <td>Avatar:</td>
       <td>
-        <img class="img-fit" [src]="userDetails.photo" />
+        <div *ngIf="userDetails != null">
+          <img class="img-fit" [src]="userDetails.photo" />
+        </div>
         <br />
         <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
         <button
@@ -18,23 +20,25 @@
     </tr>
     <tr>
       <td>Username:</td>
-      <td>{{ userDetails.username }}</td>
+      <td *ngIf="userDetails != null">{{ userDetails.username }}</td>
     </tr>
     <tr>
       <td>Email:</td>
-      <td>{{ userDetails.email }}</td>
+      <td *ngIf="userDetails != null">{{ userDetails.email }}</td>
     </tr>
     <tr>
       <td>Birthday:</td>
-      <td>{{ userDetails.birthday.substr(0, 10) }}</td>
+      <td *ngIf="userDetails != null">
+        {{ userDetails.birthday.substr(0, 10) }}
+      </td>
     </tr>
     <tr>
       <td>Country:</td>
-      <td>{{ userDetails.country }}</td>
+      <td *ngIf="userDetails != null">{{ userDetails.country }}</td>
     </tr>
     <tr>
       <td>Admin:</td>
-      <td>{{ userDetails.isAdmin }}</td>
+      <td *ngIf="userDetails != null">{{ userDetails.isAdmin }}</td>
     </tr>
   </table>
 </div>

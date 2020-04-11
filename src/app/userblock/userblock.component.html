@@ -9,7 +9,7 @@
           <tr>
             <td>Username:</td>
             <td>
-              <span
+              <span #follower
                 ><b>{{ follower.username }}</b></span
               >
             </td>
@@ -19,13 +19,29 @@
             <td>{{ follower.country }}</td>
           </tr>
           <tr>
-            <button
-              class="btn btn-secondary"
-              type="button"
-              (click)="unfollow()"
-            >
-              Unfollow
-            </button>
+            <div *ngIf="follower.flwdFlg">
+              <button
+                class="btn btn-secondary"
+                type="button"
+                (click)="unfollow(follower._id)"
+              >
+                Unfollow
+              </button>
+            </div>
+            <div *ngIf="!follower.flwdFlg">
+              <button
+                class="btn btn-primary"
+                type="button"
+                (click)="follow(follower._id)"
+              >
+                Follow
+              </button>
+            </div>
+          </tr>
+          <tr>
+            {{
+              follower.flwdFlg
+            }}
           </tr>
         </table>
       </div>
