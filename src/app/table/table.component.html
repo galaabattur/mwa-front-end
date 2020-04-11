@@ -34,7 +34,7 @@
              <th style="display:none;">{{ item._id }}</th>
              <td>{{ item.unhealthyWord }}</td>
              <td>
-                <button type="button" >Delete</button>
+              <button  (click)="deleteRow(item)">Delete</button>
              </td>
           </tr>
        </tbody>

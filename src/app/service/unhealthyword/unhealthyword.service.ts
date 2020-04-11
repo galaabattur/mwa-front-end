@@ -8,6 +8,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class UnhelthyWordService {
   private unhealthyWordUrl = 'http://localhost:3000/api/unhealthy';
+  private deteteUnhealthyWordUrl = 'http://localhost:3000/api/unhealthy/delete';
 
   constructor(private http: HttpClient) {}
 
@@ -20,6 +21,12 @@ export class UnhelthyWordService {
   getUnhealthyWord() {
     return this.http
       .get(this.unhealthyWordUrl)
+      .pipe(catchError(this.handleError));
+  }
+
+  deleteUnhealthyWord(data) {
+    return this.http
+      .post(this.deteteUnhealthyWordUrl, data)
       .pipe(catchError(this.handleError));
   }
 

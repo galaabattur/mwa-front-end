@@ -35,7 +35,6 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {
     this.service.getUnhealthyWord().subscribe(
       (data) => {
-        console.log(data["unhealthyWordsList"]);
         this.ItemsArray = data["unhealthyWordsList"];
       },
       (error) => {
@@ -44,4 +43,17 @@ export class TableComponent implements OnInit {
     );
   }
 
+  deleteRow(item) {
+    console.log("the row is "+item._id)
+    this.service.deleteUnhealthyWord(item).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      (error) => {
+        console.log(error.error);
+        this.formErrorMessage = error.error;
+        this.formError = true;
+      }
+    );
+  }
 }
