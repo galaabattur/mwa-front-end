@@ -65,13 +65,15 @@ export class UserService {
 
   unfollow(unfollowed, header) {
     const data = { unfollow: unfollowed };
-    console.log(header);
-    console.log(data);
-    this.http.post(this.postUnfollowUrl, data, { headers: header }).subscribe(
-      (data) => console.log(data),
-      (error) => {
-        console.log(error);
-      }
-    );
+    return this.http
+      .post(this.postUnfollowUrl, data, { headers: header })
+      .pipe(catchError(this.handleError));
+
+    // .subscribe(
+    //   (data) => console.log(data),
+    //   (error) => {
+    //     console.log(error);
+    //   }
+    // );
   }
 }
