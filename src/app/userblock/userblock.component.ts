@@ -21,7 +21,16 @@ export class UserblockComponent implements OnInit {
   follow(follower) {
     console.log('follow function');
     this.userService.addFollower(follower, this.header).subscribe(
-      (data) => console.log(data),
+      (data) => {
+        console.log(data);
+
+        for (let index in this.users) {
+          if (this.users[index]._id == follower) {
+            this.users[index].flwdFlg = true;
+            break;
+          }
+        }
+      },
       (error) => console.log(error)
     );
   }
@@ -30,6 +39,20 @@ export class UserblockComponent implements OnInit {
     console.log('unfollow function');
     console.log(follower);
 
-    this.userService.unfollow(follower, this.header);
+    this.userService.unfollow(follower, this.header).subscribe(
+      (data) => {
+        console.log(data);
+        console.log(this.users);
+        for (let index in this.users) {
+          if (this.users[index]._id == follower) {
+            this.users[index].flwdFlg = false;
+            break;
+          }
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

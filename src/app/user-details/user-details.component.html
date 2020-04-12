@@ -40,5 +40,12 @@
       <td>Admin:</td>
       <td *ngIf="userDetails != null">{{ userDetails.isAdmin }}</td>
     </tr>
+    <tr>
+      <td>Account status:</td>
+      <td *ngIf="userDetails != null">
+        <div *ngIf="userDetails.isEnabled">Enabled</div>
+        <div *ngIf="!userDetails.isEnabled">Disabled</div>
+      </td>
+    </tr>
   </table>
 </div>
