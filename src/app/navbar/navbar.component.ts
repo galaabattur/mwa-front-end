@@ -44,9 +44,10 @@ export class NavbarComponent implements OnInit {
   login(formData) {
     this.service.login(formData).subscribe(
       (data) => {
-        // success case
         const tokenData = jwt_decode(data['token']);
+        console.log("token "+ JSON.stringify(tokenData));
         if(tokenData["isEnabled"]){
+          // success case
           localStorage.setItem('token', data['token']);
           localStorage.setItem('isAdmin', tokenData.isAdmin);
           this.router.navigate(['/home']);

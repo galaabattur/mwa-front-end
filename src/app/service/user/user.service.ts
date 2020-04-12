@@ -16,6 +16,7 @@ export class UserService {
   private addFollowerUrl = 'http://localhost:3000/api/user/follower';
   private getFollowerUrl = 'http://localhost:3000/api/user/follower';
   private postUnfollowUrl = 'http://localhost:3000/api/user/unfollow';
+  private updateBadpostUrl = 'http://localhost:3000/api/user/updateBadPost';
 
   private token: String;
 
@@ -73,5 +74,11 @@ export class UserService {
         console.log(error);
       }
     );
+  }
+
+  increaseBadPost(header) {
+    return this.http
+      .post(this.updateBadpostUrl, "user", { headers: header })
+      .pipe(catchError(this.handleError));
   }
 }
