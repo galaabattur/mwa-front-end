@@ -5,3 +5,15 @@
   padding: 10px;
   margin-top: 10px;
 }
+
+.img-fit {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.img-fit-post {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}

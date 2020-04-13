@@ -1,11 +1,24 @@
 <div *ngFor="let post of postsArr">
   <div class="center">
-    <div>
-      {{ post.user.username }}
+    <div class="row">
+      <div class="rounded-circle">
+        <img class="img-fit rounded-circle" [src]="post.user.photo" />
+      </div>
+      <div>
+        {{ post.user.username }}
+      </div>
     </div>
-    <div class="border border-info rounded">
-      {{ post.body }}
+    <div class="row">
+      <div *ngIf="post.photo">
+        <!-- post image -->
+        <img [src]="post.photo" class="img-fit-post" />
+      </div>
+      <div class="border border-info rounded">
+        {{ post.body }}
+      </div>
     </div>
+
     <div>Likes:{{ post.likes.length }}</div>
+    <div>Comments:{{ post.likes.length }}</div>
   </div>
 </div>

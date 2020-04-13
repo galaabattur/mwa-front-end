@@ -33,7 +33,7 @@ export class FollowingComponent implements OnInit {
   getFollowingList() {
     this.userService.getFollowingList(this.header).subscribe(
       (data) => {
-        console.log(data);
+        // console.log(data);
         this.followers = data['followers'];
         for (let i = 0; i < this.followers.length; i++) {
           this.followers[i].flwdFlg = true;
