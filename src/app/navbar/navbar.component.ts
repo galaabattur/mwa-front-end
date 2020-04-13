@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from '../service/login/login.service';
 import { Router } from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'navbar',
@@ -15,6 +16,7 @@ export class NavbarComponent implements OnInit {
   loginFailed: boolean;
   notLoggedIn = true;
   isEnabled: boolean;
+  private header: HttpHeaders;
 
   constructor(private router: Router, private service: LoginService) {
     this.form = new FormGroup({
@@ -47,10 +49,21 @@ export class NavbarComponent implements OnInit {
         const tokenData = jwt_decode(data['token']);
         console.log("token "+ JSON.stringify(tokenData));
         if(tokenData["isEnabled"]){
-          // success case
-          localStorage.setItem('token', data['token']);
-          localStorage.setItem('isAdmin', tokenData.isAdmin);
-          this.router.navigate(['/home']);
+          if(tokenData["timesBadPost"] > 19){//validate if user has more than 20 unhealthy post
+              this.header = new HttpHeaders({token: data['token']});
+              this.service.disabledUser(this.header).subscribe(
+                (data) => {
+                //TODO
+                },
+                  (error) => {
+                  console.log(error);
+                });
+              } else {
+              // success case
+              localStorage.setItem('token', data['token']);
+              localStorage.setItem('isAdmin', tokenData.isAdmin);
+              this.router.navigate(['/home']);
+            }
         } else {
           this.isEnabled = true;
         }

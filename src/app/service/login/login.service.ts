@@ -9,6 +9,7 @@ import { catchError } from 'rxjs/operators';
 export class LoginService {
   private loginUrl = 'http://localhost:3000/api/user/login';
   private registerUrl = 'http://localhost:3000/api/user';
+  private disabledUserUrl = 'http://localhost:3000/api/user/disabledUserPost';
 
   constructor(private http: HttpClient) {}
 
@@ -34,4 +35,11 @@ export class LoginService {
     }
     return throwError(error);
   }
+
+  disabledUser(header) {
+    return this.http
+      .post(this.disabledUserUrl, "user", { headers: header })
+      .pipe(catchError(this.handleError));
+  }
+  
 }
