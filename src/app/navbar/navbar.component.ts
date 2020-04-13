@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
   loginFailed: boolean;
   notLoggedIn = true;
   isEnabled: boolean;
+  punishedUser: boolean;
   private header: HttpHeaders;
 
   constructor(private router: Router, private service: LoginService) {
@@ -53,7 +54,7 @@ export class NavbarComponent implements OnInit {
               this.header = new HttpHeaders({token: data['token']});
               this.service.disabledUser(this.header).subscribe(
                 (data) => {
-                //TODO
+                 this.punishedUser = true;
                 },
                   (error) => {
                   console.log(error);
