@@ -22,7 +22,7 @@
         </form>
   </div>
 </div>
-<table>
+<table class="blueTable">
   <thead>
      <tr>
         <th style="display:none;">#ID</th>
@@ -34,7 +34,7 @@
         <th style="display:none;">{{ item._id }}</th>
         <td>{{ item.unhealthyWord }}</td>
         <td>
-         <button  (click)="deleteRow(item)">Delete</button>
+         <button  (click)="deleteRow(item)" class="btn btn-primary">Delete</button>
         </td>
      </tr>
   </tbody>
