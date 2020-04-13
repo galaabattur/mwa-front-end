@@ -24,6 +24,8 @@ import { FollowingComponent } from './following/following.component';
 import { TableComponent } from './table/table.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { UserblockComponent } from './userblock/userblock.component';
+import { ManageUserComponent } from './manage-user/manage-user.component';
+
 
 const appRoutes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -36,6 +38,7 @@ const appRoutes: Routes = [
       { path: 'news', component: NewsComponent },
       { path: 'home-admin', component: HomeAdminComponent },
       { path: 'app-table', component: TableComponent },
+      { path: 'manage-user', component: ManageUserComponent },
     ],
   },
 

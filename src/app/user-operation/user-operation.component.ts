@@ -38,6 +38,10 @@ export class UserOperationComponent implements OnInit {
     return this.router.navigate(['home/app-table']);
   }
 
+  changeToManageUser() {
+    return this.router.navigate(['home/manage-user']);
+  }
+
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('isAdmin');
