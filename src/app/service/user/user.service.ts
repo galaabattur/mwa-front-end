@@ -17,6 +17,7 @@ export class UserService {
   private getFollowerUrl = 'http://localhost:3000/api/user/follower';
   private postUnfollowUrl = 'http://localhost:3000/api/user/unfollow';
   private updateBadpostUrl = 'http://localhost:3000/api/user/updateBadPost';
+  private inactiveUserUrl = 'http://localhost:3000/api/user/getInactive';
 
   private token: String;
 
@@ -81,6 +82,12 @@ export class UserService {
   increaseBadPost(header) {
     return this.http
       .post(this.updateBadpostUrl, "user", { headers: header })
+      .pipe(catchError(this.handleError));
+  }
+
+  getInactiveUser() {
+    return this.http
+      .get(this.inactiveUserUrl)
       .pipe(catchError(this.handleError));
   }
 }

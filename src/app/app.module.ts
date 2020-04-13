@@ -66,6 +66,7 @@ const appRoutes: Routes = [
     FollowingComponent,
     TableComponent,
     UserblockComponent,
+    ManageUserComponent,
   ],
   imports: [
     BrowserModule,
