@@ -7,6 +7,24 @@
     >
       <div class="form-row align-items-center">
         <div class="form-group">
+          <label>Image Url:</label>
+          <input
+            formControlName="imgUrl"
+            type="text"
+            name="imgUrl"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label>Description:</label>
+          <input
+            formControlName="description"
+            type="text"
+            name="description"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
           <label>Minimum age:</label>
           <input type="number" min="1" max="100" value="1" formControlName="minAge" class="form-control" name="minAge"/>
         </div>
@@ -28,29 +46,6 @@
             <option value="United States of America">United States of America</option>
           </select>
         </div>
-
-        <div class="form-group">
-          <label>Image Url:</label>
-          <input
-            formControlName="imgUrl"
-            type="text"
-            name="imgUrl"
-            class="form-control"
-          />
-        </div>
-        <div class="form-group">
-          <label>Description:</label>
-          <input
-            formControlName="description"
-            type="text"
-            name="description"
-            class="form-control"
-          />
-        </div>
-        <!-- <div class="form-group">
-          <label>Minimum Age:</label>
-          <input type="number" min="1" max="100" value="1" formControlName="description" class="form-control">
-        </div> -->
 
         <div class="form-group">
           <button type="submit" class="btn btn-primary">Send</button>
