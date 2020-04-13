@@ -16,6 +16,22 @@
               class="form-control"
             />
           </div>
+          <div>
+            <input
+              style="display: none;"
+              type="file"
+              name="file"
+              #fileInput
+              (change)="onFileChange($event)"
+            />
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="fileInput.click()"
+            >
+              <span class="fa-camera" [textContent]="photoName"></span>
+            </button>
+          </div>
 
           <div class="form-group">
             <button type="submit" class="btn btn-primary">Send</button>

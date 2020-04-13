@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import * as jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'user-operation',
@@ -9,10 +10,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class UserOperationComponent implements OnInit {
   username: String;
   isAdmin = localStorage.getItem('isAdmin') == 'true' ? true : false;
+  showUsername: String;
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.username = localStorage.getItem('token');
+    this.showUsername = jwt_decode(localStorage.getItem('token'))['username'];
   }
 
   changeToFollowing() {

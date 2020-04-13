@@ -24,6 +24,18 @@ export class NewsService {
       });
   }
 
+  // submitPostWithPhoto(photo, header) {
+  //   console.log(photo);
+  //   this.http
+  //     .post('http://localhost:3000/api/post/testphoto', photo, {
+  //       headers: header,
+  //     })
+  //     .subscribe(
+  //       (data) => console.log(data),
+  //       (error) => console.log(error)
+  //     );
+  // }
+
   getPosts(header) {
     const username = jwt_decode(localStorage.getItem('token')).username;
     return this.http
