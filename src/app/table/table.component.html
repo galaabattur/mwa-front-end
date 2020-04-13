@@ -1,7 +1,6 @@
-<div>
-    <h1>Unhealthy words</h1>
-    <div class="row align-items-center">
-        <form
+<div class="container border border-primary">
+  <div class="row align-items-center">
+    <form
           [formGroup]="form"
           (ngSubmit)="newHealthyWord(form.value)"
           class="form-inline"
@@ -21,22 +20,22 @@
             </div>
           </div>
         </form>
-      </div>
-    <table>
-       <thead>
-          <tr>
-             <th style="display:none;">#ID</th>
-             <th>Word</th>
-          </tr>
-       </thead>
-       <tbody>
-          <tr *ngFor="let item of ItemsArray">
-             <th style="display:none;">{{ item._id }}</th>
-             <td>{{ item.unhealthyWord }}</td>
-             <td>
-              <button  (click)="deleteRow(item)">Delete</button>
-             </td>
-          </tr>
-       </tbody>
-    </table>
- </div>
+  </div>
+</div>
+<table>
+  <thead>
+     <tr>
+        <th style="display:none;">#ID</th>
+        <th>Word</th>
+     </tr>
+  </thead>
+  <tbody>
+     <tr *ngFor="let item of ItemsArray">
+        <th style="display:none;">{{ item._id }}</th>
+        <td>{{ item.unhealthyWord }}</td>
+        <td>
+         <button  (click)="deleteRow(item)">Delete</button>
+        </td>
+     </tr>
+  </tbody>
+</table>
