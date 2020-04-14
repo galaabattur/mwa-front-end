@@ -46,9 +46,15 @@
           >
             Send
           </button>
+
+          <button type="button" class="btn btn-primary">Like</button>
         </div>
       </div>
+      <div *ngIf="post.commentError" class="alert alert-danger">
+        Comment is required
+      </div>
     </div>
+
     <!-- <div class="container"> -->
     <!-- Comments section -->
     Comments:
