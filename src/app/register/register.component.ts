@@ -22,30 +22,32 @@ export class RegisterComponent implements OnInit {
       email: new FormControl(),
       birthday: new FormControl(),
       country: new FormControl(),
+      isAdmin: new FormControl(),
     });
   }
 
   ngOnInit(): void {}
 
   register(formData) {
-    this.service.register(formData).subscribe(
-      (data) => {
-        const tokenData = jwt_decode(data['token']);
-        let userRes: UserResponse = JSON.parse(JSON.stringify(data));
-        localStorage.setItem('token', userRes.token);
-        localStorage.setItem('isAdmin', tokenData.isAdmin);
+    console.log("the data to register is "+ JSON.stringify(formData));
+    // this.service.register(formData).subscribe(
+    //   (data) => {
+    //     const tokenData = jwt_decode(data['token']);
+    //     let userRes: UserResponse = JSON.parse(JSON.stringify(data));
+    //     localStorage.setItem('token', userRes.token);
+    //     localStorage.setItem('isAdmin', tokenData.isAdmin);
 
-        if (tokenData.isAdmin) {
-        } else {
-          this.router.navigate(['/home']);
-        }
-      },
-      (error) => {
-        console.log(error.error);
-        this.formErrorMessage = error.error;
-        this.formError = true;
-      }
-    );
+    //     if (tokenData.isAdmin) {
+    //     } else {
+    //       this.router.navigate(['/home']);
+    //     }
+    //   },
+    //   (error) => {
+    //     console.log(error.error);
+    //     this.formErrorMessage = error.error;
+    //     this.formError = true;
+    //   }
+    // );
   }
 
   get username() {
