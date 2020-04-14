@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { UnhelthyWordService } from '../service/unhealthyword/unhealthyword.service';
+import { UserService } from '../service/user/user.service';
+import { HttpHeaders } from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'request-activate',
@@ -11,18 +13,23 @@ export class RequestActivateComponent implements OnInit {
   form: FormGroup;
   formError: Boolean;
   formErrorMessage: String;
+  header: HttpHeaders;
 
   ItemsArray = [];
-  constructor(private service: UnhelthyWordService) {
+  constructor(private service: UserService, private router: Router, private route: ActivatedRoute) {
     this.form = new FormGroup({
-      unhealthyWord: new FormControl(''),
+      activateAcc: new FormControl(''),
     });
   }
 
-  newHealthyWord(formData) {
-    this.service.register(formData).subscribe(
+  requestActivate(formData) {
+    this.header = new HttpHeaders({ token: localStorage.getItem('token') });
+    this.service.sendRequestActivatePost(this.header).subscribe(
       (data) => {
-        this.ItemsArray.push({_id: data["unhealthyWordClass1"]["_id"], unhealthyWord: data["unhealthyWordClass1"]["unhealthyWord"]});
+        localStorage.removeItem('token');
+        localStorage.removeItem('isAdmin');
+        localStorage.removeItem('activateRequest');
+        this.router.navigate(['/']);
       },
       (error) => {
         console.log(error.error);
@@ -32,31 +39,5 @@ export class RequestActivateComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {
-    this.getUnhealthyWord();
-  }
-
-  getUnhealthyWord() {
-    this.service.getUnhealthyWord().subscribe(
-      (data) => {
-        this.ItemsArray = data["unhealthyWordsList"];
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
-
-  deleteRow(item) {
-    this.service.deleteUnhealthyWord(item).subscribe(
-      (data) => {
-        this.getUnhealthyWord();
-      },
-      (error) => {
-        console.log(error.error);
-        this.formErrorMessage = error.error;
-        this.formError = true;
-      }
-    );
-  }
+  ngOnInit(): void {}
 }

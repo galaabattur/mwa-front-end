@@ -19,6 +19,7 @@ export class UserService {
   private updateBadpostUrl = 'http://localhost:3000/api/user/updateBadPost';
   private inactiveUserUrl = 'http://localhost:3000/api/user/getInactive';
   private activeUserpostUrl = 'http://localhost:3000/api/user/activeUser';
+  private sendRequestActivatePostUrl = 'http://localhost:3000/api/user/requestActiveUser';
   
   private token: String;
 
@@ -95,6 +96,12 @@ export class UserService {
   activeUserPost(item) {
     return this.http
       .post(this.activeUserpostUrl, {"user": item})
+      .pipe(catchError(this.handleError));
+  }
+
+  sendRequestActivatePost(header) {
+    return this.http
+      .post(this.sendRequestActivatePostUrl, "user", {headers: header})
       .pipe(catchError(this.handleError));
   }
 }

@@ -1,19 +1,19 @@
-<!-- <div class="container border border-primary">
+<div class="container border border-primary">
   <div class="row align-items-center">
-    <h3>Unhealthy Words</h3>
+    <h3>Request Activate Account</h3>
     <form
           [formGroup]="form"
-          (ngSubmit)="newHealthyWord(form.value)"
+          (ngSubmit)="requestActivate(form.value)"
           class="form-inline"
         >
           <div class="form-row align-items-center">
             <div class="form-group">
-              <label>Unhealthy word:</label>
+              <label>Request Activate:</label>
               <input
-                formControlName="unhealthyWord"
+                formControlName="activateAcc"
                 type="text"
-                name="unhealthyWord"
-                class="form-control"
+                name="activateAcc"
+                style="display:none;"
               />
             </div>
             <div class="form-group">
@@ -23,21 +23,3 @@
         </form>
   </div>
 </div>
-<table class="blueTable">
-  <thead>
-     <tr>
-        <th style="display:none;">#ID</th>
-        <th>Word</th>
-     </tr>
-  </thead>
-  <tbody>
-     <tr *ngFor="let item of ItemsArray">
-        <th style="display:none;">{{ item._id }}</th>
-        <td>{{ item.unhealthyWord }}</td>
-        <td>
-         <button  (click)="deleteRow(item)" class="btn btn-primary">Delete</button>
-        </td>
-     </tr>
-  </tbody>
-</table> -->
-test
