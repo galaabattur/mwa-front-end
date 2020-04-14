@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { AdvertisementService } from '../service/advertisement/advertisement.service';
+import { UserService } from '../service/user/user.service';
 import { Router } from '@angular/router';
-import * as jwt_decode from 'jwt-decode';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'manage-user',
@@ -13,8 +13,10 @@ export class ManageUserComponent implements OnInit {
   form: FormGroup;
   formError: Boolean;
   formErrorMessage: String;
+  inactiveUsersList = [];
+  private header: HttpHeaders;
 
-  constructor(private service: AdvertisementService, private router: Router) {
+  constructor(private service: UserService, private router: Router) {
     this.form = new FormGroup({
       imgUrl: new FormControl(''),
       description: new FormControl(''),
@@ -23,13 +25,27 @@ export class ManageUserComponent implements OnInit {
     });
   }
 //
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getInactiveUsers();
+  }
 
-  newAdvertisement(formData) {
-    console.log("the data is "+JSON.stringify(formData));
-    this.service.register(formData).subscribe(
+  getInactiveUsers() {
+    this.service.getInactiveUser().subscribe(
       (data) => {
-        this.router.navigate(['/home']);
+        this.inactiveUsersList = data["usersInactive"];
+        console.log("incative user aer "+ JSON.stringify(data));
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  activateUserRow(item) {
+    //this.header = new HttpHeaders({ token: item});
+    this.service.activeUserPost(item["_id"]).subscribe(
+      (data) => {
+        this.getInactiveUsers();
       },
       (error) => {
         console.log(error.error);

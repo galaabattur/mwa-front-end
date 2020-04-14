@@ -19,11 +19,20 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     let token = localStorage.getItem('token');
     let admin = localStorage.getItem('isAdmin');
+    let activateRequest = localStorage.getItem("activateRequest");
+    let isEnabled = localStorage.getItem("isEnabled");
+    console.log("isEnabled "+isEnabled)
+    
     if (token) {
       if (admin === 'true') {
         this.router.navigate(['/home/home-admin']);
-      } else {
+      } else if(isEnabled === 'true'){
         this.router.navigate(['/home/news']);
+      } else if(activateRequest === 'false'){
+        this.router.navigate(['/home/request-activate']);
+      } 
+        else {
+        
       }
       this.currPage = 'home';
     } else {
