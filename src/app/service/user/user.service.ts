@@ -18,7 +18,8 @@ export class UserService {
   private postUnfollowUrl = 'http://localhost:3000/api/user/unfollow';
   private updateBadpostUrl = 'http://localhost:3000/api/user/updateBadPost';
   private inactiveUserUrl = 'http://localhost:3000/api/user/getInactive';
-
+  private activeUserpostUrl = 'http://localhost:3000/api/user/activeUser';
+  
   private token: String;
 
   constructor(private http: HttpClient) {
@@ -88,6 +89,12 @@ export class UserService {
   getInactiveUser() {
     return this.http
       .get(this.inactiveUserUrl)
+      .pipe(catchError(this.handleError));
+  }
+
+  activeUserPost(item) {
+    return this.http
+      .post(this.activeUserpostUrl, {"user": item})
       .pipe(catchError(this.handleError));
   }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UserService } from '../service/user/user.service';
 import { Router } from '@angular/router';
-import * as jwt_decode from 'jwt-decode';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'manage-user',
@@ -14,6 +14,7 @@ export class ManageUserComponent implements OnInit {
   formError: Boolean;
   formErrorMessage: String;
   inactiveUsersList = [];
+  private header: HttpHeaders;
 
   constructor(private service: UserService, private router: Router) {
     this.form = new FormGroup({
@@ -26,7 +27,6 @@ export class ManageUserComponent implements OnInit {
 //
   ngOnInit(): void {
     this.getInactiveUsers();
-    // this.inactiveUsersList.push({"_id":"5e9389d64c12d4210c5c5ac9","username":"test","email":"jim_javi90@hotmail.com","country":"Uganda","timesBadPost":20});
   }
 
   getInactiveUsers() {
@@ -37,6 +37,20 @@ export class ManageUserComponent implements OnInit {
       },
       (error) => {
         console.log(error);
+      }
+    );
+  }
+
+  activateUserRow(item) {
+    //this.header = new HttpHeaders({ token: item});
+    this.service.activeUserPost(item["_id"]).subscribe(
+      (data) => {
+        this.getInactiveUsers();
+      },
+      (error) => {
+        console.log(error.error);
+        this.formErrorMessage = error.error;
+        this.formError = true;
       }
     );
   }
