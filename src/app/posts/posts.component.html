@@ -49,17 +49,18 @@
         </div>
       </div>
     </div>
-    <div class="container">
-      <!-- Comments section -->
-      Comments:
-      <div *ngFor="let comment of post.comments">
-        <div class="row">
-          <div class="border border-success rounded">
-            <img [src]="comment.commentedBy.photo" class="img-fit" />
-            {{ comment.commentText }}
-          </div>
+    <!-- <div class="container"> -->
+    <!-- Comments section -->
+    Comments:
+    <div *ngFor="let comment of post.comments">
+      <div class="row">
+        <div class="border border-success rounded">
+          <img [src]="comment.commentedBy.photo" class="img-fit-comment" />
+          <b>{{ comment.commentedBy.username }}</b>
+          <p>{{ comment.commentText }}</p>
         </div>
       </div>
     </div>
+    <!-- </div> -->
   </div>
 </div>
