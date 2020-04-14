@@ -29,7 +29,7 @@ export class HomeAdminComponent implements OnInit {
     console.log("the data is "+JSON.stringify(formData));
     this.service.register(formData).subscribe(
       (data) => {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/home/home-admin']);
       },
       (error) => {
         console.log(error.error);
