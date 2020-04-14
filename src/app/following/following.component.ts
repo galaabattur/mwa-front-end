@@ -52,9 +52,6 @@ export class FollowingComponent implements OnInit {
   searchUserName(formData) {
     this.userService.searchUser(formData, this.header).subscribe(
       (data) => {
-        console.log(data);
-
-        console.log(data['users'][0].flwdFlg);
         if (data['users'].length == 0) {
           this.noresult = !this.noresult;
           // this.noresult = true;

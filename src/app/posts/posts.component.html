@@ -5,7 +5,13 @@
         <img class="img-fit rounded-circle" [src]="post.user.photo" />
       </div>
       <div>
-        {{ post.user.username }}
+        <h5>
+          <span class="showusername">
+            {{ post.user.username }}
+          </span>
+        </h5>
+
+        <span class="timeplace">{{ post.insertDate | date: "short" }}</span>
       </div>
     </div>
     <div class="row">
@@ -13,12 +19,34 @@
         <!-- post image -->
         <img [src]="post.photo" class="img-fit-post" />
       </div>
-      <div class="border border-info rounded">
-        {{ post.body }}
+    </div>
+    <div class="row">
+      <div class="border border-info rounded post-body">
+        <div class="post-body">
+          {{ post.body }}
+        </div>
       </div>
     </div>
 
-    <div>Likes:{{ post.likes.length }}</div>
-    <div>Comments:{{ post.likes.length }}</div>
+    <div>Likes:{{ post.likes.length }} Comments:{{ post.likes.length }}</div>
+    <div class="container">
+      <div class="row">
+        Comment:
+      </div>
+
+      <div class="border rounded border-primary">
+        <input class="form-control" type="text" name="comment" #comment />
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="submitComment(comment.value, post._id)"
+        >
+          Send
+        </button>
+      </div>
+    </div>
+    <div class="container">
+      <!-- Comments section -->
+    </div>
   </div>
 </div>
