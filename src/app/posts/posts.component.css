@@ -49,3 +49,11 @@
   height: 30px;
   object-fit: cover;
 }
+
+.comment-body {
+  margin-left: 20px;
+}
+
+.comment-box {
+  margin: 10px;
+}

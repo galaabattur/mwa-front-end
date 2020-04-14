@@ -57,7 +57,9 @@
         <div class="border border-success rounded">
           <img [src]="comment.commentedBy.photo" class="img-fit-comment" />
           <b>{{ comment.commentedBy.username }}</b>
-          <p>{{ comment.commentText }}</p>
+          <div class="border border-primary comment-box">
+            <p class="comment-body">{{ comment.commentText }}</p>
+          </div>
         </div>
       </div>
     </div>

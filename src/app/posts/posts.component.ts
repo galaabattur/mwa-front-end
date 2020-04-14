@@ -18,7 +18,7 @@ export class PostsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.postsArr);
+    // console.log(this.postsArr);
   }
 
   getLikes(postId) {}
