@@ -48,7 +48,6 @@ export class NavbarComponent implements OnInit {
     this.service.login(formData).subscribe(
       (data) => {
         const tokenData = jwt_decode(data['token']);
-        console.log("token "+ JSON.stringify(tokenData));
         if(tokenData["isEnabled"]){
           if(tokenData["timesBadPost"] > 19){//validate if user has more than 20 unhealthy post
               this.header = new HttpHeaders({token: data['token']});
@@ -65,7 +64,12 @@ export class NavbarComponent implements OnInit {
               localStorage.setItem('isAdmin', tokenData.isAdmin);
               this.router.navigate(['/home']);
             }
-        } else {
+        } if(!tokenData["activateRequest"]){
+          localStorage.setItem('token', data['token']);
+          localStorage.setItem('activateRequest', tokenData["activateRequest"]);
+          this.router.navigate(['/home']);
+        }
+          else {
           this.isEnabled = true;
         }
       },

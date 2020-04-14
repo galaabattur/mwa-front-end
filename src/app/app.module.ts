@@ -25,6 +25,7 @@ import { TableComponent } from './table/table.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { UserblockComponent } from './userblock/userblock.component';
 import { ManageUserComponent } from './manage-user/manage-user.component';
+import { RequestActivateComponent } from './request-activate/request-activate.component';
 
 
 const appRoutes: Routes = [
@@ -39,6 +40,7 @@ const appRoutes: Routes = [
       { path: 'home-admin', component: HomeAdminComponent },
       { path: 'app-table', component: TableComponent },
       { path: 'manage-user', component: ManageUserComponent },
+      { path: 'request-activate', component: RequestActivateComponent },
     ],
   },
 
@@ -67,6 +69,7 @@ const appRoutes: Routes = [
     TableComponent,
     UserblockComponent,
     ManageUserComponent,
+    RequestActivateComponent
   ],
   imports: [
     BrowserModule,
