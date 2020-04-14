@@ -1,8 +1,12 @@
-<div class="border border-primary">
+<div class="border border-primary" *ngFor="let item of advertisementList">
   <div>
-    <img class="add" src="https://tonysbigpizza.com/wp-content/uploads/2020/04/bg_choose_locations.jpg"/>
+    <img class="add" [src]="item.imgUrl"/>
   </div>
   <div>
-    test
+    {{item.description}}
   </div>
 </div>
+<!--
+  imgUrl
+  description
+-->
