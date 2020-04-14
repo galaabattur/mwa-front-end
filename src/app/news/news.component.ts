@@ -64,7 +64,16 @@ export class NewsComponent implements OnInit {
     }
     uploadData.append('postname', data['postname']);
     // this.newsService.submitPostWithPhoto(uploadData, this.header);
-    this.newsService.submitPost(uploadData, this.header);
+    this.newsService.submitPost(uploadData, this.header).subscribe(
+      (data) => {
+        console.log(data);
+        this.getPosts();
+        // this.posts = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   onFileChange(event) {

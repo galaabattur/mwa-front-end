@@ -17,11 +17,9 @@ export class NewsService {
   constructor(private http: HttpClient) {}
 
   submitPost(data, header) {
-    this.http
+    return this.http
       .post(this.postUrl, data, { headers: header })
-      .subscribe((response) => {
-        console.log(response);
-      });
+      .pipe(catchError(this.handleError));
   }
 
   // submitPostWithPhoto(photo, header) {

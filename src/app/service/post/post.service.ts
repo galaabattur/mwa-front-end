@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,14 +12,19 @@ export class PostService {
   constructor(private http: HttpClient) {}
 
   sendComment(data, header) {
-    console.log(data);
-    this.http.post(this.submitCommentUrl, data, { headers: header }).subscribe(
-      (data) => {
-        console.log(data);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    return this.http
+      .post(this.submitCommentUrl, data, { headers: header })
+      .pipe(catchError(this.handleError));
+  }
+
+  private handleError(error) {
+    if (error instanceof HttpErrorResponse) {
+      // Server side error
+      console.log('Server side error', error);
+    } else {
+      // client side error
+      console.log('Client side error', error);
+    }
+    return throwError(error);
   }
 }

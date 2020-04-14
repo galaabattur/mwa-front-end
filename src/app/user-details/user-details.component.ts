@@ -54,6 +54,7 @@ export class UserDetailsComponent implements OnInit {
     ) => {
       console.log('File upload successfull', item, status, response);
       alert('Successfully uploaded');
+      this.getUserDetails();
     };
   }
 

@@ -37,3 +37,8 @@
   text-align: right;
   font-weight: 300;
 }
+
+.rounded {
+  width: 100%;
+  margin: 5px;
+}

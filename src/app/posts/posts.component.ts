@@ -17,11 +17,36 @@ export class PostsComponent implements OnInit {
     this.header = new HttpHeaders({ token: this.token });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.postsArr);
+  }
+
+  getLikes(postId) {}
+
+  getComments(postId) {}
 
   submitComment(commentData, postId) {
     const data = { comment: commentData, postId: postId };
+    this.postService.sendComment(data, this.header).subscribe(
+      (data) => {
+        console.log(this.postsArr);
+        console.log(data);
 
-    this.postService.sendComment(data, this.header);
+        this.postsArr.map((post) => {
+          console.log(post._id);
+          console.log(data['newpost']['_id']);
+          if (post._id == data['newpost']['_id']) {
+            post.comments = data['newpost']['comments'];
+          } else {
+            return post;
+          }
+        });
+
+        console.log(this.postsArr);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }
