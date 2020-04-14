@@ -17,6 +17,12 @@ export class AdvertisementService {
       .pipe(catchError(this.handleError));
   }
 
+  getAdvertisement() {
+    return this.http
+      .get(this.advertisementUrl)
+      .pipe(catchError(this.handleError));
+  }
+
   private handleError(error) {
     if (error instanceof HttpErrorResponse) {
       // Server side error
