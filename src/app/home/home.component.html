@@ -3,10 +3,10 @@
     <div class="col-3">
       <user-operation></user-operation>
     </div>
-    <div class="col-6">
+    <div [className]="getClass()">
       <router-outlet></router-outlet>
     </div>
-    <div class="col-3">
+    <div class="col-3" *ngIf="!isAdmin">
       <advertise></advertise>
     </div>
   </div>

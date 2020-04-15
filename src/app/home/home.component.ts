@@ -9,7 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   currPage: String;
-
+  isAdmin = localStorage.getItem("isAdmin")=== 'true' ? true : false;
   constructor(
     private service: LoginService,
     private router: Router,
@@ -38,5 +38,10 @@ export class HomeComponent implements OnInit {
     } else {
       this.router.navigate(['/']);
     }
+  }
+
+  //
+  getClass() {
+    return this.isAdmin ? 'col-9': 'col-6';
   }
 }
