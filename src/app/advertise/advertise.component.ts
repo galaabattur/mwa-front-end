@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdvertisementService } from '../service/advertisement/advertisement.service';
+import * as jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'advertise',
@@ -16,7 +17,13 @@ export class AdvertiseComponent implements OnInit {
   }
 
   getAdvertisement() {
-    this.advService.getAdvertisement().subscribe(
+    let birthday = jwt_decode(localStorage.getItem('token')).birthday;
+    let country = jwt_decode(localStorage.getItem('token')).country;
+    let bithDayDate = new Date(birthday);
+
+    var ageDifYear = new Date().getFullYear() - bithDayDate.getFullYear();
+
+    this.advService.getAdvertisement(country, ageDifYear).subscribe(
       (data) => {
         this.advertisementList = data["advertisement"];
         console.log("the advertisement are "+ JSON.stringify(this.advertisementList));

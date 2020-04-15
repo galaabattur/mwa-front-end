@@ -17,9 +17,9 @@ export class AdvertisementService {
       .pipe(catchError(this.handleError));
   }
 
-  getAdvertisement() {
+  getAdvertisement(country, years) {
     return this.http
-      .get(this.advertisementUrl)
+      .get(this.advertisementUrl+"/" +country+"/"+years)
       .pipe(catchError(this.handleError));
   }
 
