@@ -106,4 +106,12 @@ export class PostsComponent implements OnInit {
       }
     );
   }
+
+  onScroll() {
+    console.log('onscroll functino');
+  }
+
+  onUp() {
+    console.log('on up function');
+  }
 }

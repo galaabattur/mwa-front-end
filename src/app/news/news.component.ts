@@ -18,6 +18,7 @@ export class NewsComponent implements OnInit {
   photoUploadFlg: Boolean;
   form: FormGroup;
   posts;
+  allPosts;
   private header: HttpHeaders;
   ItemsArray = [];
   file;
@@ -45,12 +46,35 @@ export class NewsComponent implements OnInit {
   getPosts() {
     this.newsService.getPosts(this.header).subscribe(
       (data) => {
-        this.posts = data;
-        console.log(this.posts);
+        let t = [];
+        for (let i = 0; i < 11; i++) {
+          if (data[i] == undefined) {
+            continue;
+          }
+          t.push(data[i]);
+        }
+        this.posts = t;
+        this.allPosts = data;
+        for (let i = 0; i < t.length; i++) {
+          this.allPosts.shift();
+        }
+
+        console.log('posts', this.posts);
+        console.log('All posts', this.allPosts);
       },
       (error) => {
         alert(error);
       }
+    );
+  }
+
+  getOnePost() {
+    this.newsService.getPosts(this.header).subscribe(
+      (data) => {
+        console.log(data);
+        this.posts = [].concat(this.posts, data);
+      },
+      (error) => console.log(error)
     );
   }
 
@@ -67,6 +91,8 @@ export class NewsComponent implements OnInit {
     this.newsService.submitPost(uploadData, this.header).subscribe(
       (data) => {
         console.log(data);
+        this.allPosts = [];
+        this.posts = [];
         this.getPosts();
         // this.posts = data;
       },
@@ -106,6 +132,12 @@ export class NewsComponent implements OnInit {
           }
         );
       }
+    }
+  }
+
+  onScroll() {
+    if (this.allPosts.length > 0) {
+      this.posts.push(this.allPosts.shift());
     }
   }
 }

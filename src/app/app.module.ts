@@ -27,6 +27,7 @@ import { UserblockComponent } from './userblock/userblock.component';
 import { ManageUserComponent } from './manage-user/manage-user.component';
 import { RequestActivateComponent } from './request-activate/request-activate.component';
 
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 const appRoutes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -69,7 +70,7 @@ const appRoutes: Routes = [
     TableComponent,
     UserblockComponent,
     ManageUserComponent,
-    RequestActivateComponent
+    RequestActivateComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,6 +80,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
     FileUploadModule,
+    InfiniteScrollModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
