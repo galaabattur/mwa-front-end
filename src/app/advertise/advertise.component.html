@@ -1,9 +1,9 @@
 <div class="border border-primary" *ngFor="let item of advertisementList">
   <br>
   <div>
-    <img class="add" [src]="item.imgUrl"/>
+    <a [href]="item.linkUrl" target="_blank"><img class="add" [src]="item.imgUrl"/></a>
   </div>
-  <div>
-    {{item.description}}
+  <div >
+    <a [href]="item.linkUrl" target="_blank">{{item.description}}</a>
   </div>
 </div>

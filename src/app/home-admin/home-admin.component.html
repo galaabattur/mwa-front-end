@@ -1,22 +1,22 @@
 <div class="container border border-primary">
-  <div class="row align-items-center">
+  <div >
     <h3>Advertisement</h3>
     <form
       [formGroup]="form"
       (ngSubmit)="newAdvertisement(form.value)"
-      class="form-inline"
     >
-      <div class="form-row align-items-center">
-        <div class="form-group">
+      <div>
+        <div style="max-width: 100%;">
           <label>Image Url:</label>
           <input
             formControlName="imgUrl"
             type="text"
             name="imgUrl"
             class="form-control"
+            style="max-width: 100%;"
           />
         </div>
-        <div class="form-group">
+        <div>
           <label>Description:</label>
           <input
             formControlName="description"
@@ -25,12 +25,23 @@
             class="form-control"
           />
         </div>
-        <div class="form-group">
+        <div style="max-width: 100%;">
+          <label>Link Url:</label>
+          <input
+            formControlName="linkUrl"
+            type="text"
+            name="linkUrl"
+            class="form-control"
+            style="max-width: 100%;"
+          />
+        </div>
+        <div class="row">
+        <div class="column">
           <label>Minimum age:</label>
           <input type="number" min="1" max="100" value="1" formControlName="minAge" class="form-control" name="minAge"/>
         </div>
         
-        <div class="form-group">
+        <div class="column">
           <label>Country:</label>
           <select id="country" name="country" formControlName="country" class="form-control">
             <option value="all" selected>All</option>
@@ -48,7 +59,7 @@
             <option value="United States of America">United States of America</option>
           </select>
         </div>
-
+      </div>
         <div class="form-group">
           <button type="submit" class="btn btn-primary">Send</button>
         </div>
