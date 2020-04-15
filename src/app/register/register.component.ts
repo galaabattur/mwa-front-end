@@ -37,10 +37,7 @@ export class RegisterComponent implements OnInit {
         localStorage.setItem('token', userRes.token);
         localStorage.setItem('isAdmin', tokenData.isAdmin);
 
-        if (tokenData.isAdmin) {
-        } else {
-          this.router.navigate(['/home']);
-        }
+        this.router.navigate(['/home']);
       },
       (error) => {
         console.log(error.error);

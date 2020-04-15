@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdvertisementService } from '../service/advertisement/advertisement.service';
 
 @Component({
   selector: 'advertise',
@@ -6,7 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./advertise.component.css']
 })
 export class AdvertiseComponent implements OnInit {
-  constructor() {}
+  constructor(private advService: AdvertisementService) {}
 
-  ngOnInit(): void {}
+  advertisementList=[];
+
+  ngOnInit(): void {
+    this.getAdvertisement();
+  }
+
+  getAdvertisement() {
+    this.advService.getAdvertisement().subscribe(
+      (data) => {
+        this.advertisementList = data["advertisement"];
+        console.log("the advertisement are "+ JSON.stringify(this.advertisementList));
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 }

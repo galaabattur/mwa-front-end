@@ -1,3 +1,12 @@
-<div class="border border-primary">
-  <h2>ad will be here</h2>
+<div class="border border-primary" *ngFor="let item of advertisementList">
+  <div>
+    <img class="add" [src]="item.imgUrl"/>
+  </div>
+  <div>
+    {{item.description}}
+  </div>
 </div>
+<!--
+  imgUrl
+  description
+-->
