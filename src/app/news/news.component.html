@@ -42,7 +42,15 @@
   </div>
   <div class="row">
     <div style="width: 100%;">
-      <posts [postsArr]="posts"></posts>
+      <div
+        class="search-result"
+        infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="50"
+        (scrolled)="onScroll()"
+      >
+        <posts [postsArr]="posts"></posts>
+      </div>
     </div>
   </div>
 </div>
