@@ -27,6 +27,44 @@ export class PostsComponent implements OnInit {
 
   getComments(postId) {}
 
+  submitUnlike(postId) {
+    console.log('unlike function');
+    const data = { postId: postId };
+    this.postService.submitUnlike(data, this.header).subscribe(
+      (data) => {
+        console.log(data);
+        for (let post of this.postsArr) {
+          if (post._id == postId) {
+            post.likes = data['likes'];
+            post.liked = false;
+          }
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  submitLike(postId) {
+    console.log(postId, 'liked');
+    const data = { postId: postId };
+    this.postService.submitLike(data, this.header).subscribe(
+      (data) => {
+        console.log(data);
+        for (let post of this.postsArr) {
+          if (post._id == postId) {
+            post.likes = data['likes'];
+            post.liked = true;
+          }
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
   submitComment(commentData, postId) {
     if (commentData == '') {
       for (let post of this.postsArr) {

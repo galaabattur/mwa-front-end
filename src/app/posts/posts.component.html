@@ -47,7 +47,22 @@
             Send
           </button>
 
-          <button type="button" class="btn btn-primary">Like</button>
+          <button
+            *ngIf="!post.liked"
+            type="button"
+            class="btn btn-primary"
+            (click)="submitLike(post._id)"
+          >
+            Like
+          </button>
+          <button
+            *ngIf="post.liked"
+            type="button"
+            class="btn btn-secondary"
+            (click)="submitUnlike(post._id)"
+          >
+            Unlike
+          </button>
         </div>
       </div>
       <div *ngIf="post.commentError" class="alert alert-danger">
