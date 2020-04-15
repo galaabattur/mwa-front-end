@@ -48,15 +48,18 @@ export class NewsComponent implements OnInit {
       (data) => {
         let t = [];
         for (let i = 0; i < 11; i++) {
-          if (data[i] != undefined) {
-            t.push(data[i]);
+          if (data[i] == undefined) {
+            continue;
           }
+          t.push(data[i]);
         }
-        console.log(t);
         this.posts = t;
         this.allPosts = data;
-        this.allPosts.shift();
-        console.log(this.posts);
+        for (let i = 0; i < t.length; i++) {
+          this.allPosts.shift();
+        }
+
+        console.log('posts', this.posts);
         console.log('All posts', this.allPosts);
       },
       (error) => {
@@ -133,8 +136,7 @@ export class NewsComponent implements OnInit {
   }
 
   onScroll() {
-    console.log('scrolled down');
-    if (this.allPosts.length > 11) {
+    if (this.allPosts.length > 0) {
       this.posts.push(this.allPosts.shift());
     }
   }
