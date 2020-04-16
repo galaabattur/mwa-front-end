@@ -64,9 +64,11 @@ export class NavbarComponent implements OnInit {
               localStorage.setItem('token', data['token']);
               localStorage.setItem('isAdmin', tokenData.isAdmin);
               localStorage.setItem('isEnabled', tokenData["isEnabled"]);
+              localStorage.setItem('activateRequest', tokenData["activateRequest"]);
               this.router.navigate(['/home']);
             }
         } if(!tokenData["activateRequest"]){
+          localStorage.setItem('isAdmin', tokenData.isAdmin);
           localStorage.setItem('token', data['token']);
           localStorage.setItem('activateRequest', tokenData["activateRequest"]);
           localStorage.setItem('isEnabled', tokenData["isEnabled"]);

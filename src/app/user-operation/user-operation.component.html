@@ -15,7 +15,7 @@
       >
     </li>
     <!--options user-->
-    <li class="nav-item" *ngIf="!isAdmin">
+    <li class="nav-item" *ngIf="!getUserVisible()">
       <a
         routerLink="/home/news"
         class="nav-link"
@@ -25,7 +25,7 @@
         >Home</a
       >
     </li>
-    <li class="nav-item" *ngIf="!isAdmin">
+    <li class="nav-item" *ngIf="!getUserVisible()">
       <a
         routerLink="/home/following"
         routerLinkActive="active"

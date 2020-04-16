@@ -10,6 +10,7 @@ import * as jwt_decode from 'jwt-decode';
 export class UserOperationComponent implements OnInit {
   username: String;
   isAdmin = localStorage.getItem('isAdmin') == 'true' ? true : false;
+  isEnabled = localStorage.getItem("isEnabled")=== 'true' ? true : false;
   showUsername: String;
   constructor(private router: Router, private route: ActivatedRoute) {}
 
@@ -46,5 +47,9 @@ export class UserOperationComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('isAdmin');
     this.router.navigate(['/']);
+  }
+
+  getUserVisible(){
+    return this.isAdmin || !this.isAdmin && !this.isEnabled;
   }
 }
