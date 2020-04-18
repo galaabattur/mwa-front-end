@@ -7,9 +7,10 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class LoginService {
-  private loginUrl = 'http://localhost:3000/api/user/login';
-  private registerUrl = 'http://localhost:3000/api/user';
-  private disabledUserUrl = 'http://localhost:3000/api/user/disabledUserPost';
+  private loginUrl = 'https://mwa-project-2020-b.herokuapp.com/api/user/login';
+  private registerUrl = 'https://mwa-project-2020-b.herokuapp.com/api/user';
+  private disabledUserUrl =
+    'https://mwa-project-2020-b.herokuapp.com/api/user/disabledUserPost';
 
   constructor(private http: HttpClient) {}
 
@@ -38,8 +39,7 @@ export class LoginService {
 
   disabledUser(header) {
     return this.http
-      .post(this.disabledUserUrl, "user", { headers: header })
+      .post(this.disabledUserUrl, 'user', { headers: header })
       .pipe(catchError(this.handleError));
   }
-  
 }

@@ -7,9 +7,10 @@ import { throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class PostService {
-  submitCommentUrl = 'http://localhost:3000/api/post/comment';
-  submitLikeUrl = 'http://localhost:3000/api/post/like';
-  submitUnlikeUrl = 'http://localhost:3000/api/post/unlike';
+  submitCommentUrl =
+    'https://mwa-project-2020-b.herokuapp.com/api/post/comment';
+  submitLikeUrl = 'https://mwa-project-2020-b.herokuapp.com/api/post/like';
+  submitUnlikeUrl = 'https://mwa-project-2020-b.herokuapp.com/api/post/unlike';
 
   constructor(private http: HttpClient) {}
 

@@ -12,8 +12,9 @@ import * as jwt_decode from 'jwt-decode';
   providedIn: 'root',
 })
 export class NewsService {
-  private postUrl = 'http://localhost:3000/api/post';
-  private searchPostUrl = 'http://localhost:3000/api/post/search';
+  private postUrl = 'https://mwa-project-2020-b.herokuapp.com/api/post';
+  private searchPostUrl =
+    'https://mwa-project-2020-b.herokuapp.com/api/post/search';
 
   constructor(private http: HttpClient) {}
 

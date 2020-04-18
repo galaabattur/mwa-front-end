@@ -7,7 +7,8 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AdvertisementService {
-  private advertisementUrl = 'http://localhost:3000/api/advertisement';
+  private advertisementUrl =
+    'https://mwa-project-2020-b.herokuapp.com/api/advertisement';
 
   constructor(private http: HttpClient) {}
 
@@ -19,7 +20,7 @@ export class AdvertisementService {
 
   getAdvertisement(country, years) {
     return this.http
-      .get(this.advertisementUrl+"/" +country+"/"+years)
+      .get(this.advertisementUrl + '/' + country + '/' + years)
       .pipe(catchError(this.handleError));
   }
 

@@ -7,8 +7,10 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class UnhelthyWordService {
-  private unhealthyWordUrl = 'http://localhost:3000/api/unhealthy';
-  private deteteUnhealthyWordUrl = 'http://localhost:3000/api/unhealthy/delete';
+  private unhealthyWordUrl =
+    'https://mwa-project-2020-b.herokuapp.com/api/unhealthy';
+  private deteteUnhealthyWordUrl =
+    'https://mwa-project-2020-b.herokuapp.com/api/unhealthy/delete';
 
   constructor(private http: HttpClient) {}
 

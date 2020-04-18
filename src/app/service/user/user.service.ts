@@ -11,16 +11,24 @@ import { throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  private getUserDataUrl = 'http://localhost:3000/api/user';
-  private searchUserUrl = 'http://localhost:3000/api/user/search';
-  private addFollowerUrl = 'http://localhost:3000/api/user/follower';
-  private getFollowerUrl = 'http://localhost:3000/api/user/follower';
-  private postUnfollowUrl = 'http://localhost:3000/api/user/unfollow';
-  private updateBadpostUrl = 'http://localhost:3000/api/user/updateBadPost';
-  private inactiveUserUrl = 'http://localhost:3000/api/user/getInactive';
-  private activeUserpostUrl = 'http://localhost:3000/api/user/activeUser';
-  private sendRequestActivatePostUrl = 'http://localhost:3000/api/user/requestActiveUser';
-  
+  private getUserDataUrl = 'https://mwa-project-2020-b.herokuapp.com//api/user';
+  private searchUserUrl =
+    'https://mwa-project-2020-b.herokuapp.com//api/user/search';
+  private addFollowerUrl =
+    'https://mwa-project-2020-b.herokuapp.com//api/user/follower';
+  private getFollowerUrl =
+    'https://mwa-project-2020-b.herokuapp.com//api/user/follower';
+  private postUnfollowUrl =
+    'https://mwa-project-2020-b.herokuapp.com//api/user/unfollow';
+  private updateBadpostUrl =
+    'https://mwa-project-2020-b.herokuapp.com//api/user/updateBadPost';
+  private inactiveUserUrl =
+    'https://mwa-project-2020-b.herokuapp.com//api/user/getInactive';
+  private activeUserpostUrl =
+    'https://mwa-project-2020-b.herokuapp.com//api/user/activeUser';
+  private sendRequestActivatePostUrl =
+    'https://mwa-project-2020-b.herokuapp.com//api/user/requestActiveUser';
+
   private token: String;
 
   constructor(private http: HttpClient) {
@@ -83,7 +91,7 @@ export class UserService {
 
   increaseBadPost(header) {
     return this.http
-      .post(this.updateBadpostUrl, "user", { headers: header })
+      .post(this.updateBadpostUrl, 'user', { headers: header })
       .pipe(catchError(this.handleError));
   }
 
@@ -95,13 +103,13 @@ export class UserService {
 
   activeUserPost(item) {
     return this.http
-      .post(this.activeUserpostUrl, {"user": item})
+      .post(this.activeUserpostUrl, { user: item })
       .pipe(catchError(this.handleError));
   }
 
   sendRequestActivatePost(header) {
     return this.http
-      .post(this.sendRequestActivatePostUrl, "user", {headers: header})
+      .post(this.sendRequestActivatePostUrl, 'user', { headers: header })
       .pipe(catchError(this.handleError));
   }
 }
