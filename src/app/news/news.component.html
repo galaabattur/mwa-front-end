@@ -1,4 +1,26 @@
 <div class="container border border-primary">
+  <!-- <div class="input-group mb-3"> -->
+  <form
+    class="form-group"
+    [formGroup]="searchform"
+    (ngSubmit)="searchPost(searchform.value)"
+  >
+    <div class="input-group">
+      <input
+        formControlName="searchpost"
+        type="text"
+        placeholder="Search post"
+        class="form-control"
+      />
+      <span class="input-group-btn">
+        <button type="submit" class="btn btn-primary">
+          Search
+        </button>
+      </span>
+    </div>
+  </form>
+  <!-- </div> -->
+
   <div class="row">
     <div class="row align-items-center new-post">
       <form

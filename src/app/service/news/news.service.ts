@@ -13,6 +13,7 @@ import * as jwt_decode from 'jwt-decode';
 })
 export class NewsService {
   private postUrl = 'http://localhost:3000/api/post';
+  private searchPostUrl = 'http://localhost:3000/api/post/search';
 
   constructor(private http: HttpClient) {}
 
@@ -38,6 +39,12 @@ export class NewsService {
     const username = jwt_decode(localStorage.getItem('token')).username;
     return this.http
       .get(this.postUrl + '/' + username, { headers: header })
+      .pipe(catchError(this.handleError));
+  }
+
+  searchPost(data, header) {
+    return this.http
+      .post(this.searchPostUrl, data, { headers: header })
       .pipe(catchError(this.handleError));
   }
 

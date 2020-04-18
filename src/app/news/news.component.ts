@@ -17,6 +17,7 @@ export class NewsComponent implements OnInit {
   photoName = '';
   photoUploadFlg: Boolean;
   form: FormGroup;
+  searchform: FormGroup;
   posts;
   allPosts;
   private header: HttpHeaders;
@@ -32,6 +33,30 @@ export class NewsComponent implements OnInit {
     this.form = new FormGroup({
       postname: new FormControl(''),
     });
+
+    this.searchform = new FormGroup({
+      searchpost: new FormControl(''),
+    });
+  }
+
+  searchPost(formData) {
+    this.newsService.searchPost(formData, this.header).subscribe(
+      (data) => {
+        let t = [];
+        for (let i = 0; i < 11; i++) {
+          if (data[i] == undefined) {
+            continue;
+          }
+          t.push(data[i]);
+        }
+        this.posts = t;
+        this.allPosts = data;
+        for (let i = 0; i < t.length; i++) {
+          this.allPosts.shift();
+        }
+      },
+      (error) => console.log(error)
+    );
   }
 
   get postname() {
