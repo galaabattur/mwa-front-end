@@ -19,6 +19,7 @@ export class NewsService {
   constructor(private http: HttpClient) {}
 
   submitPost(data, header) {
+    console.log('data before submitting:', data);
     return this.http
       .post(this.postUrl, data, { headers: header })
       .pipe(catchError(this.handleError));
