@@ -31,6 +31,14 @@ export class HomeAdminComponent implements OnInit {
     this.service.register(formData).subscribe(
       (data) => {
         this.router.navigate(['/home/home-admin']);
+        this.form = new FormGroup({
+          imgUrl: new FormControl(''),
+          description: new FormControl(''),
+          minAge: new FormControl(''),
+          country: new FormControl(''),
+          linkUrl: new FormControl(''),
+        });
+        alert("Advertisement created");
       },
       (error) => {
         console.log(error.error);
