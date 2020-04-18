@@ -27,7 +27,7 @@ export class NewsService {
   // submitPostWithPhoto(photo, header) {
   //   console.log(photo);
   //   this.http
-  //     .post('http://localhost:3000/api/post/testphoto', photo, {
+  //     .post('https://mwa-project-2020-b.herokuapp.com/api/post/testphoto', photo, {
   //       headers: header,
   //     })
   //     .subscribe(

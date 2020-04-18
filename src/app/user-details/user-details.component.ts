@@ -5,7 +5,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FileUploader } from 'ng2-file-upload';
 
-let imageUploadUrl = 'http://localhost:3000/api/user/photo';
+let imageUploadUrl = 'https://mwa-project-2020-b.herokuapp.com/';
 
 @Component({
   selector: 'user-details',
@@ -20,7 +20,7 @@ export class UserDetailsComponent implements OnInit {
   username;
   header;
   token;
-  photoBaseUrl = 'http://localhost:3000/img/';
+  photoBaseUrl = 'https://mwa-project-2020-b.herokuapp.com/';
   myForm = new FormGroup({
     file: new FormControl(''),
     fileSource: new FormControl(''),
@@ -37,7 +37,8 @@ export class UserDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.getUserDetails();
     let photoUploadUrl =
-      'http://localhost:3000/api/user/photo/' + this.username;
+      'https://mwa-project-2020-b.herokuapp.com/api/user/photo/' +
+      this.username;
 
     this.uploader = new FileUploader({
       url: photoUploadUrl,
