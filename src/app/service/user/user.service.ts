@@ -11,23 +11,23 @@ import { throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  private getUserDataUrl = 'https://mwa-project-2020-b.herokuapp.com//api/user';
+  private getUserDataUrl = 'https://mwa-project-2020-b.herokuapp.com/api/user';
   private searchUserUrl =
-    'https://mwa-project-2020-b.herokuapp.com//api/user/search';
+    'https://mwa-project-2020-b.herokuapp.com/api/user/search';
   private addFollowerUrl =
-    'https://mwa-project-2020-b.herokuapp.com//api/user/follower';
+    'https://mwa-project-2020-b.herokuapp.com/api/user/follower';
   private getFollowerUrl =
-    'https://mwa-project-2020-b.herokuapp.com//api/user/follower';
+    'https://mwa-project-2020-b.herokuapp.com/api/user/follower';
   private postUnfollowUrl =
-    'https://mwa-project-2020-b.herokuapp.com//api/user/unfollow';
+    'https://mwa-project-2020-b.herokuapp.com/api/user/unfollow';
   private updateBadpostUrl =
-    'https://mwa-project-2020-b.herokuapp.com//api/user/updateBadPost';
+    'https://mwa-project-2020-b.herokuapp.com/api/user/updateBadPost';
   private inactiveUserUrl =
-    'https://mwa-project-2020-b.herokuapp.com//api/user/getInactive';
+    'https://mwa-project-2020-b.herokuapp.com/api/user/getInactive';
   private activeUserpostUrl =
-    'https://mwa-project-2020-b.herokuapp.com//api/user/activeUser';
+    'https://mwa-project-2020-b.herokuapp.com/api/user/activeUser';
   private sendRequestActivatePostUrl =
-    'https://mwa-project-2020-b.herokuapp.com//api/user/requestActiveUser';
+    'https://mwa-project-2020-b.herokuapp.com/api/user/requestActiveUser';
 
   private token: String;
 
