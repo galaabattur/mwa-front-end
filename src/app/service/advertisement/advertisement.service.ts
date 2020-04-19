@@ -23,9 +23,7 @@ export class AdvertisementService {
   getAdvertisement(country, years) {
     const data = { country: country, years: years };
     return this.http
-      .get(this.advertisementUrl + '/' + country + '/' + years, {
-        params: data,
-      })
+      .get(this.advertisementUrl, { params: data })
       .pipe(catchError(this.handleError));
   }
 
