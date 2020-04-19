@@ -6,28 +6,22 @@ import {
 } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private getUserDataUrl = 'https://mwa-project-2020-b.herokuapp.com/api/user';
-  private searchUserUrl =
-    'https://mwa-project-2020-b.herokuapp.com/api/user/search';
-  private addFollowerUrl =
-    'https://mwa-project-2020-b.herokuapp.com/api/user/follower';
-  private getFollowerUrl =
-    'https://mwa-project-2020-b.herokuapp.com/api/user/follower';
-  private postUnfollowUrl =
-    'https://mwa-project-2020-b.herokuapp.com/api/user/unfollow';
-  private updateBadpostUrl =
-    'https://mwa-project-2020-b.herokuapp.com/api/user/updateBadPost';
-  private inactiveUserUrl =
-    'https://mwa-project-2020-b.herokuapp.com/api/user/getInactive';
-  private activeUserpostUrl =
-    'https://mwa-project-2020-b.herokuapp.com/api/user/activeUser';
+  private getUserDataUrl = environment.baseUrl + '/user';
+  private searchUserUrl = environment.baseUrl + '/user/search';
+  private addFollowerUrl = environment.baseUrl + '/user/follower';
+  private getFollowerUrl = environment.baseUrl + '/user/follower';
+  private postUnfollowUrl = environment.baseUrl + '/user/unfollow';
+  private updateBadpostUrl = environment.baseUrl + '/user/updateBadPost';
+  private inactiveUserUrl = environment.baseUrl + '/user/getInactive';
+  private activeUserpostUrl = environment.baseUrl + '/user/activeUser';
   private sendRequestActivatePostUrl =
-    'https://mwa-project-2020-b.herokuapp.com/api/user/requestActiveUser';
+    environment.baseUrl + '/user/requestActiveUser';
 
   private token: String;
 

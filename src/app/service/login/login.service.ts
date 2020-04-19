@@ -2,15 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
-  private loginUrl = 'https://mwa-project-2020-b.herokuapp.com/api/user/login';
-  private registerUrl = 'https://mwa-project-2020-b.herokuapp.com/api/user';
-  private disabledUserUrl =
-    'https://mwa-project-2020-b.herokuapp.com/api/user/disabledUserPost';
+  // private loginUrl = 'https://mwa-project-2020-b.herokuapp.com/api/user/login';
+  // private registerUrl = 'https://mwa-project-2020-b.herokuapp.com/api/user';
+  // private disabledUserUrl = 'https://mwa-project-2020-b.herokuapp.com/api/user/disabledUserPost';
+
+  private loginUrl = environment.baseUrl + '/user/login';
+  private registerUrl = environment.baseUrl + '/user';
+  private disabledUserUrl = environment.baseUrl + '/user/disabledUserPost';
 
   constructor(private http: HttpClient) {}
 

@@ -2,15 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UnhelthyWordService {
-  private unhealthyWordUrl =
-    'https://mwa-project-2020-b.herokuapp.com/api/unhealthy';
-  private deteteUnhealthyWordUrl =
-    'https://mwa-project-2020-b.herokuapp.com/api/unhealthy/delete';
+  // private unhealthyWordUrl = 'https://mwa-project-2020-b.herokuapp.com/api/unhealthy';
+  // private deteteUnhealthyWordUrl ='https://mwa-project-2020-b.herokuapp.com/api/unhealthy/delete';
+
+  private unhealthyWordUrl = environment.baseUrl + '/unhealthy';
+  private deteteUnhealthyWordUrl = environment.baseUrl + '/unhealthy/delete';
 
   constructor(private http: HttpClient) {}
 

@@ -5,12 +5,12 @@ import * as jwt_decode from 'jwt-decode';
 @Component({
   selector: 'advertise',
   templateUrl: './advertise.component.html',
-  styleUrls: ['./advertise.component.css']
+  styleUrls: ['./advertise.component.css'],
 })
 export class AdvertiseComponent implements OnInit {
   constructor(private advService: AdvertisementService) {}
 
-  advertisementList=[];
+  advertisementList = [];
 
   ngOnInit(): void {
     this.getAdvertisement();
@@ -22,11 +22,15 @@ export class AdvertiseComponent implements OnInit {
     let bithDayDate = new Date(birthday);
 
     var ageDifYear = new Date().getFullYear() - bithDayDate.getFullYear();
+    console.log(country);
+    console.log(ageDifYear);
 
     this.advService.getAdvertisement(country, ageDifYear).subscribe(
       (data) => {
-        this.advertisementList = data["advertisement"];
-        console.log("the advertisement are "+ JSON.stringify(this.advertisementList));
+        this.advertisementList = data['advertisement'];
+        console.log(
+          'the advertisement are ' + JSON.stringify(this.advertisementList)
+        );
       },
       (error) => {
         console.log(error);

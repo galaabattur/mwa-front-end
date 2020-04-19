@@ -4,8 +4,7 @@ import * as jwt_decode from 'jwt-decode';
 import { HttpHeaders } from '@angular/common/http';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FileUploader } from 'ng2-file-upload';
-
-let imageUploadUrl = 'https://mwa-project-2020-b.herokuapp.com/';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'user-details',
@@ -20,7 +19,7 @@ export class UserDetailsComponent implements OnInit {
   username;
   header;
   token;
-  photoBaseUrl = 'https://mwa-project-2020-b.herokuapp.com/';
+  photoBaseUrl = environment.baseUrl.substr(0, environment.baseUrl.length - 3);
   myForm = new FormGroup({
     file: new FormControl(''),
     fileSource: new FormControl(''),
@@ -36,9 +35,7 @@ export class UserDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserDetails();
-    let photoUploadUrl =
-      'https://mwa-project-2020-b.herokuapp.com/api/user/photo/' +
-      this.username;
+    let photoUploadUrl = environment.baseUrl + '/user/photo/' + this.username;
 
     this.uploader = new FileUploader({
       url: photoUploadUrl,

@@ -7,14 +7,17 @@ import {
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import * as jwt_decode from 'jwt-decode';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NewsService {
-  private postUrl = 'https://mwa-project-2020-b.herokuapp.com/api/post';
-  private searchPostUrl =
-    'https://mwa-project-2020-b.herokuapp.com/api/post/search';
+  // private postUrl = 'https://mwa-project-2020-b.herokuapp.com/api/post';
+  // private searchPostUrl = 'https://mwa-project-2020-b.herokuapp.com/api/post/search';
+
+  private postUrl = environment.baseUrl + '/post';
+  private searchPostUrl = environment.baseUrl + '/post/search';
 
   constructor(private http: HttpClient) {}
 
